@@ -1,5 +1,5 @@
 #include <stdio.h>
 
-int main(int argc, void char *[]){
+int main(int argc, char *[]){
     return 0;
 }
