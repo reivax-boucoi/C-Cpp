@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <strings.h>
 class Keyword{
 private:
     std::string const m_Required;
@@ -55,7 +57,24 @@ namespace Interface::SCPI{
 	}
 }
 template <bool IsRoot=false>
-class Node{};
+class Node{
+	private:
+		Keyword const m_Keyword;
+	public:
+		Node(Keyword const & pKeyword):m_Keyword(pKeyword){}
+		auto operator()(std::string const & pBlock, unsigned & pIndex) const noexcept{
+			using namespace Helpers;
+			unsigned index = pindex;
+			if constexpr (IsRoot){
+				if(Optional(":",pBlock,index))
+					if(m_Keyword(pBlock,index)){
+						pindex=index;
+						return true;
+					}
+			}
+		}
+
+};
 bool Query(std::string const & pBlock, unsigned & pIndex){}
 
 
