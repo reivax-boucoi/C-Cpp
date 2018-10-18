@@ -1,0 +1,28 @@
+WP6 - GND
+WP7 - RxD
+WP8 - TxD
+Communications happens at 2400,n,8,1, by sending a single byte ascii letter. These are the ones
+'i' - Turn HV mark on
+'q' - Turn HV mark off
+'n' - Hold toggle
+'d' - Get the current LCD contents as 8 bytes.
+
+Send 'd'
+Returns 8 bytes:
+I1 : K M % Diode Hz F mV A
+I2 : Auto AC DC V [Ohms] uF nF 
+D4 : c g b d a f e dp 
+D3 : c g b d a f e dp
+D2 : b g c d a f e dp
+D1 : b g c d a f e dp
+I3 : Conti (Beeep) Hold Minus
+I3 : Minus Hold Conti
+I4 : Manual uA mA
+
+
+7seg :
+0a0
+f0b
+0g0
+e0c
+0d0dp

@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1513219567/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1513219567/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1513219567/PATH/value=C\:/Program Files/Java/jre1.8.0_171/bin/server;C\:/Program Files/Java/jre1.8.0_171/bin;C\:/Program Files/Java/jre1.8.0_171/lib/amd64;C\:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C\:\\ProgramData\\Oracle\\Java\\javapath;C\:\\WinAVR-20100110\\bin;C\:\\WinAVR-20100110\\utils\\bin;C\:\\WinAVR-20100110\\avr\\bin;C\:\\WINDOWS\\system32;C\:\\WINDOWS;C\:\\WINDOWS\\System32\\Wbem;C\:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C\:\\Program Files (x86)\\STMicroelectronics\\STM32 ST-LINK Utility\\ST-LINK Utility;C\:\\Program Files\\doxygen\\bin;C\:\\Program Files (x86)\\PuTTY\\;C\:\\Program Files\\Git\\cmd;C\:\\Wincupl\\WINCUPL\\EXE;C\:\\Wincupl\\WINCUPL\\FITTERS;C\:\\WINDOWS\\system32
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1513219567/append=true
+environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1513219567/appendContributed=true
