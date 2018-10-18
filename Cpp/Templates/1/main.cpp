@@ -83,7 +83,9 @@ class Node{
 		}
 
 };
-bool Query(std::string const & pBlock, unsigned & pIndex){}
+bool Query(std::string const & pBlock, unsigned & pIndex){
+	
+}
 
 
 int main(int argc, char *[]){
