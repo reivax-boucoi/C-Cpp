@@ -17,12 +17,52 @@ public:
 
     }
 };
+namespace Interface::SCPI{
+	namespace Helpers{
+		char ToLower(char const pInput){
+			
+		}
+		bool IsSameLetter(char const pLHS, char const pRHs){
+			
+		}
+		bool Required(std::string const & pKeyword, std::string const & pBlock, unsigned const pIndex)noexcept{
+			unisgned index =0;
+			for(;index<pKeyword.size();++index){
+				char const required=pKeyword[index];
+				unsigned const block_index=index+pIndex;
+				if(block_index < pBlock.size()){
+					char const current=pBlock[block_index];
+					if(IsSameLetter(current,required))continue;
+				}
+				break;
+			}
+			if(index==pKeyword.size()){
+				pIndex+=index;
+				return true
+			}
+			return false;
+		}
+		bool Optional(std::string const & pKeyword, std::string const & pBlock, unsigned const pIndex){
+			Required(pKeyword,pBlock,pIndex);
+			return true;
+		}
+		template <typename T, typename ... Args>
+		bool IsAny(T const & pValue, Args const & ... pArgs){}
+		bool isWhitespace(char const pInput){}
+		bool RequiredWhitespace(std::string const & pBlock, unsigned & pIndex){}
+		bool OptionalWhitespace(std::string const & pBlock, unsigned &pIndex){}
 
+	}
+}
 template <bool IsRoot=false>
 class Node{};
 bool Query(std::string const & pBlock, unsigned & pIndex){}
 
 
 int main(int argc, char *[]){
-    return 0;
+	unisgned int index=0;
+	Keyword keyword("HEL","lo");
+	if(keyword("Hello",index))printf("Found\n");
+
+	return 0;
 }
