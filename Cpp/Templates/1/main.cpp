@@ -22,7 +22,7 @@ public:
 namespace Interface::SCPI{
 	namespace Helpers{
 		char ToLower(char const pInput){
-			
+			return std::string::toLowerCase(pInput);
 		}
 		bool IsSameLetter(char const pLHS, char const pRHs){
 			
@@ -71,6 +71,14 @@ class Node{
 						pindex=index;
 						return true;
 					}
+			}else{
+				if(Required(":",pBlock,index)){
+					if(m_Keyword(pBlock,index)){
+						pIndex=index;
+						return true;
+					}
+				}
+				return false;
 			}
 		}
 
