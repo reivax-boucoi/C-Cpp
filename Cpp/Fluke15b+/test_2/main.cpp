@@ -64,13 +64,10 @@ int main(void){
     int i=1;
     SerialPort serialPort("/dev/ttyUSB0", BaudRate::B_2400);
     serialPort.Open();
-    serialPort.Write("n");
-    serialPort.Write("n");
-    
+    for(int j=0;j<4;j++){
         serialPort.Write("d");
         serialPort.Read(data);
-        serialPort.Write("d");
-        serialPort.Read(data);
+    }
     
     while(i){
         char unit[10]="";
