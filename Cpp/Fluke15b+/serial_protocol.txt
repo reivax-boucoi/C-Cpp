@@ -9,15 +9,14 @@ Communications happens at 2400,n,8,1, by sending a single byte ascii letter. The
 
 Send 'd'
 Returns 8 bytes:
-I1 : K M % Diode Hz F mV A
-I2 : Auto AC DC V [Ohms] uF nF 
-D4 : c g b d a f e dp 
-D3 : c g b d a f e dp
-D2 : b g c d a f e dp
-D1 : b g c d a f e dp
-I3 : Conti (Beeep) Hold Minus
-I3 : Minus Hold Conti
-I4 : Manual uA mA
+data[0] I1 : K M % Diode Hz F mV A
+data[1] I2 : Auto AC DC V [Ohms] uF nF 
+data[2] D4 : c g b d a f e dp 
+data[3] D3 : c g b d a f e dp
+data[4] D2 : b g c d a f e dp
+data[5] D1 : b g c d a f e dp
+data[6] I3 : Minus unused Hold Conti
+data[7] I4 : Manual uA mA
 
 
 7seg :
