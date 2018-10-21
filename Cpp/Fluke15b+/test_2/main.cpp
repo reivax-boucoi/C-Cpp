@@ -92,7 +92,7 @@ int main(void){
 
         if (data[6]&I3_MINUS) value=-value;
 
-        if (data[0]&I1_MILLIV) strcpy(unit,"V");
+        if (data[0]&I1_MILLIV) strcpy(unit,"m");
         if (data[0]&I1_MEGA) strcpy(unit,"M");
         if (data[0]&I1_KILO) strcpy(unit,"k");
         if (data[1]&I2_NANOF) strcpy(unit,"n");
