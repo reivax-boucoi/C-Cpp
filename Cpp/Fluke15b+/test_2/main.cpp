@@ -40,8 +40,6 @@
 #define DIGIT_9 0x3F
 
 
-using namespace mn::CppLinuxSerial;
-
 static int lcdToDec(int lcd, int digit) {
 	const int digits[]={DIGIT_0, DIGIT_1, DIGIT_2, DIGIT_3, DIGIT_4, DIGIT_5, DIGIT_6, 
 			DIGIT_7, DIGIT_8, DIGIT_9};
