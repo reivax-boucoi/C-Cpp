@@ -19,7 +19,7 @@
 #define I2_AC		(1<<6)
 #define I2_AUTO		(1<<7)
 
-#define I3_CONT		(1<<0) //continuency test
+#define I3_CONT		(1<<0)
 #define I3_HOLD		(1<<1)
 #define I3_MINUS	(1<<3)
 
@@ -47,9 +47,7 @@ static int lcdToDec(int lcd, int digit) {
 	for (x=0; x<10; x++) if (lcd==digits[x]) return x;
 	return 0;
 }
-//int data[8]={0x02,0x30,0x95,0x7D,0x15,0x05,0x00,0x80};
-std::string data="blank data";
-float value;
+
 int pow(int b){
     int r=1;
     for(int i=0;i<b;i++){
@@ -58,25 +56,26 @@ int pow(int b){
     return r;
 }
 
+std::string data="blank data";
+float value;
+
+
 int main(void){
     int i=1;
     SerialPort serialPort("/dev/ttyUSB0", BaudRate::B_2400);
     serialPort.Open();
-    for(int j=0;j<4;j++){
-        serialPort.Write("d");
-        serialPort.Read(data);
-    }
     
     while(i){
         char unit[10]="";
         value=0.0;
+        bool valid=true;
         serialPort.Write("d");
         serialPort.Read(data);
         
         for(int j=0;j<4;j++){
             int a=lcdToDec(data[j+2]&0x7f, j)*pow(j);
-            if(a==-1){
-                printf("Invalid data received !\r\n");
+            if(a==-1){//receive error
+                valid=false;
                 break;
             }
             value+=a;
@@ -87,7 +86,7 @@ int main(void){
 
         if (data[6]&I3_MINUS) value=-value;
 
-        if (data[0]&I1_MILLIV) strcpy(unit,"m");
+        if (data[0]&I1_MILLIV) strcpy(unit,"m"); // if multiple ifs from this block are true: receive error
         if (data[0]&I1_MEGA) strcpy(unit,"M");
         if (data[0]&I1_KILO) strcpy(unit,"k");
         if (data[1]&I2_NANOF) strcpy(unit,"n");
@@ -95,19 +94,23 @@ int main(void){
         if (data[7]&I4_MILLIA) strcpy(unit,"m");
         if (data[7]&I4_MICROA) strcpy(unit,"u");
 
-        if (data[0]&I1_FARAD) strncat(unit,"F",5);
+        if (data[0]&I1_FARAD) strncat(unit,"F",5); // if multiple ifs from this block are true: receive error
         if (data[0]&I1_AMP) strncat(unit,"A",5);
         if (data[0]&I1_PCT) strncat(unit,"%",5);
         if (data[0]&I1_HZ) strncat(unit,"Hz",5);
         if (data[1]&I2_OHM) strncat(unit,"Ohm",5);
         if (data[1]&I2_VOLT) strncat(unit,"V",5);
 
-        if (data[1]&I2_AC) strncat(unit,"AC",5);
+        if (data[1]&I2_AC) strncat(unit,"AC",5); // if multiple ifs from this block are true: receive error
         if (data[1]&I2_DC) strncat(unit,"DC",5);
         
-        printf("%4.3f%s\r\n",value,unit);
-        printf("Enter 1 for a read, 0 to exit : ");
-        scanf("%d",&i);
+        if(valid){
+            printf("%4.3f%s\r\n",value,unit);
+            printf("Enter 1 for a read, 0 to exit : ");
+            scanf("%d",&i);
+        }else{
+            printf("Invalid data received ! Retrying...\r\n");   
+        }
     }
     serialPort.Close();
 	return 0;
