@@ -47,7 +47,7 @@ static int lcdToDec(int lcd, int digit) {
 			DIGIT_7, DIGIT_8, DIGIT_9};
 	int x;
 	for (x=0; x<10; x++) if (lcd==digits[x]) return x;
-	return -1;
+	return 0;
 }
 //int data[8]={0x02,0x30,0x95,0x7D,0x15,0x05,0x00,0x80};
 std::string data="blank data";
@@ -92,7 +92,7 @@ int main(void){
 
         if (data[6]&I3_MINUS) value=-value;
 
-        if (data[0]&I1_MILLIV) strcpy(unit,"mV");
+        if (data[0]&I1_MILLIV) strcpy(unit,"V");
         if (data[0]&I1_MEGA) strcpy(unit,"M");
         if (data[0]&I1_KILO) strcpy(unit,"k");
         if (data[1]&I2_NANOF) strcpy(unit,"n");
@@ -107,8 +107,8 @@ int main(void){
         if (data[1]&I2_OHM) strncat(unit,"Ohm",5);
         if (data[1]&I2_VOLT) strncat(unit,"V",5);
 
-        if (data[1]&I2_AC) strncat(unit," AC",5);
-        if (data[1]&I2_DC) strncat(unit," DC",5);
+        if (data[1]&I2_AC) strncat(unit,"AC",5);
+        if (data[1]&I2_DC) strncat(unit,"DC",5);
         
         printf("%4.3f%s\r\n",value,unit);
         printf("Enter 1 for a read, 0 to exit : ");
