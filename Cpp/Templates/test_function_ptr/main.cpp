@@ -8,7 +8,7 @@ void fun1(int i,...){
 void fun2(int i...){
  cout<<"fun 2 args "<<i<<" and "<<endl;   
 }
-typedef void (*fn_ptr)(int,...);
+typedef void (*fn_ptr)(float);
 
 map<string , fn_ptr> cmdLookUp;
     
