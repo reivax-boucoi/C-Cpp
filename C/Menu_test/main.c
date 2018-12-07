@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "menu.h"
 
 struct Led{
     const char* name;
@@ -43,10 +42,122 @@ typedef const struct Menu{
         const struct Menu* submenu;
     }sub[];
 };
-struct Menu Mmain;
-struct Menu M1={"First Menu","RED",3,setHour,{{1,0},{2,0},{12,&Mmain}}};
-struct Menu M2={"Second Menu","BLUE",3,setMode,{{1,0},{2,0},{12,&Mmain}}};
-struct Menu Mmain={"Main","WHITE",3,0,{{1,&M1},{2,&M2},{4,0}}};
+struct Menu M0main;
+struct Menu M1mode={"Mode","CYAN",5,setMode,{
+    {1,0},//Hour only
+    {2,0},//Hour + temp (slow)
+    {3,0},//Hour + temp (fast)
+    {4,0},//temp only
+    {12,&M0main}//return    
+}};
+struct Menu M1cmode={"Color Mode","BLUE",8,setColorMode,{
+    {1,0},//fixed
+    {2,0},//random single (slow)
+    {3,0},//random single (fast)
+    {4,0},//random all (slow)
+    {5,0},//random all (fast)
+    {6,0},//cycle (slow)
+    {7,0},//cycle (fast)
+    {12,&M0main}//return    
+}};
+struct Menu M1nightmode={"Night Mode","MAGENTA",4,setNightMode,{
+    {1,0},//none
+    {2,&M2offhour},//Half brightness
+    {3,&M2offhour},//Off completely
+    {12,&M0main}//return
+}};
+struct Menu M2offhour={"Night off Hour","RED",12,setNightOff,{
+    {1,&M3onhour},//heures
+    {2,&M3onhour},
+    {3,&M3onhour},
+    {4,&M3onhour},
+    {5,&M3onhour},
+    {6,&M3onhour},
+    {7,&M3onhour},
+    {8,&M3onhour},
+    {9,&M3onhour},
+    {10,&M3onhour},
+    {11,&M3onhour},
+    {12,&M1nightmode}//return
+}};
+struct Menu M3onhour={"Night on Hour","BLUE",12,setNightOn,{
+    {1,0},//heure
+    {2,0},
+    {3,0},
+    {4,0},
+    {5,0},
+    {6,0},
+    {7,0},
+    {8,0},
+    {9,0},
+    {10,0},
+    {11,0},
+    {12,&M1nightmode}//return
+}};
+struct Menu M1setTime={"Set Time","YELLOW",5,0,{
+    {1,&M2sethouram},//hour am
+    {2,&M2sethourpm},//hour pm
+    {3,&M2setminam},//min am
+    {4,&M2setminpm},//min pm
+    {12,&M0main}//return
+}};
+struct Menu M2sethouram={"Set hour AM","GREEN",13,setHouram,{
+    {1,0},//heure
+    {2,0},
+    {3,0},
+    {4,0},
+    {5,0},
+    {6,0},
+    {7,0},
+    {8,0},
+    {9,0},
+    {10,0},
+    {11,0},
+    {13,0},//midi
+    {12,&M1setTime}//return
+}};
+struct Menu M2sethourpm={"Set hour PM","GREEN",13,setHourpm,{
+    {1,0},//heure
+    {2,0},
+    {3,0},
+    {4,0},
+    {5,0},
+    {6,0},
+    {7,0},
+    {8,0},
+    {9,0},
+    {10,0},
+    {11,0},
+    {14,0},//minuit
+    {12,&M1setTime}//return
+}};
+struct Menu M2setminam={"Set min AM","RED",4,setMinam,{
+    {16,0},//dix
+    {18,0},//vingt
+    {17,0},//1/2
+    {12,&M1setTime}//return
+}};
+struct Menu M2setminpm={"Set min PM","RED",4,setMinpm,{
+    {16,0},//dix
+    {18,0},//vingt
+    {17,0},//1/2
+    {12,&M1setTime}//return
+}};
+struct Menu M1eventMode={"Event","MAGENTA",3,setEventMode,{
+    {1,0},//Event on
+    {2,0},//Event off
+    {12,&M0main}//return
+}};
+struct Menu M1reset={"RESET","RED",3,reset,{
+    {1,0},//yes
+    {12,&M0main}//return
+}};
+struct Menu M1rainbow={"Rainbow!","WHITE",3,setRainbow,{
+    {1,0},//Rainbow on
+    {2,0},//Rainbow off
+    {12,&M0main}//return
+}};
+struct Menu M0main={"Main","WHITE",8,0,{{1,&M1mode},{2,&M1cmode},{3,&M1nightmode},{4,&M1setMin},{5,&M1eventMode},{6,&M1reset},{7,&M1rainbow}}};
 
 int findNextEntry(struct Menu* m,int i){
     if((i+2)>m->nb_optn)return 0;
@@ -54,24 +165,24 @@ int findNextEntry(struct Menu* m,int i){
 }
 
 struct Menu* getSubMenu(struct Menu* m,int index){
- if(m->sub[index].submenu==0)return &Mmain;//if executed NULL, return to main menu
- return m->sub[index].submenu;
+    if(m->sub[index].submenu==0)return &M0main;//if executed NULL, return to main menu
+    return m->sub[index].submenu;
 }
 int main(void){
     char c=' ';
     int index=0;
-    struct Menu* Mcurrent=&Mmain;
+    struct Menu* Mcurrent=&M0main;
     printf("%lu\r\n",sizeof(int));
     printf("%lu\r\n",sizeof(Mcurrent));
     while(c!='q'){
         if(c!='\n'){
             if(c=='e'){
-                if(Mcurrent->fptr!=0)Mcurrent->fptr(index);
-                Mcurrent=getSubMenu(Mcurrent,index);
+                if(Mcurrent->fptr!=0 && Mcurrent->sub[index].submenu==0)Mcurrent->fptr(index);//check if function is associated and selected value is not a navigation move
+                Mcurrent=getSubMenu(Mcurrent,index);//get new menu
                 index=0;
             }else if(c=='+'){
                 leds[Mcurrent->sub[index].led].on=0;
-                index=findNextEntry(Mcurrent,index);
+                index=findNextEntry(Mcurrent,index);//get following option
                 leds[Mcurrent->sub[index].led].on=1;
             }
             for(int i=0;i<19;i++){
