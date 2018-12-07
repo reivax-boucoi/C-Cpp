@@ -1,6 +1,5 @@
 TARGET= a.out
-OBJECTS=main.o menu.o 
-TOBJECTS=test.o menu.o
+OBJECTS=main.o 
 CFLAGS= -Wall
 
 default : main
@@ -21,10 +20,3 @@ clean :
 
 main : $(OBJECTS)
 	gcc $(CFLAGS) $(OBJECTS) -o $(TARGET)
-
-test : $(TOBJECTS)
-	gcc $(CFLAGS) $(TOBJECTS) -o $(TARGET)
-	echo "Starting Test Program Execution...\r\n\r\n"
-	./$(TARGET)
-	echo "\r\n\r\nEnd Test Program Execution..."
-	make clean
