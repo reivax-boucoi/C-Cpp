@@ -58,7 +58,7 @@ void drawGrid(int (&grid)[N][N]){
 template<std::size_t N>
 void drawGrid(int (&grid)[N][N], int (&grid1)[N][N]){
     printf("\r\n");
-    printf("  0123456789 \t 0123456789 \r\n");
+    printf("  0123456789 \t  0123456789 \r\n");
     for(int i=0;i<GRIDSIZE;i++){
         printf("%i|",i);
         for(int j=0;j<GRIDSIZE;j++){
@@ -76,7 +76,7 @@ void drawGrid(int (&grid)[N][N], int (&grid1)[N][N]){
 bool solved(void){
     for(int i=0;i<GRIDSIZE;i++){
         for(int j=0;j<GRIDSIZE;j++){
-            if(currentgrid[i][j]==UNKNOWN){
+            if(currentgrid[i][j]==UNKNOWN && currentgrid[i][j]!=MINE){
                 return 0;
             }
         }
@@ -91,7 +91,7 @@ void revealAdjacent(int i, int j){
     int maxy=(j==(GRIDSIZE-1))?j:j+1;
     for(int x=minx;x<=maxx;x++){
         for(int y=miny;y<=maxy;y++){
-            if(x!=i && y!=j){
+            if(!(x==i && y==j) && !(x==maxx && y==maxy)){
                 if(solugrid[x][y]==BLANK && currentgrid[x][y]==UNKNOWN){
                     currentgrid[x][y]=BLANK;
                     revealAdjacent(x,y);
@@ -103,7 +103,10 @@ void revealAdjacent(int i, int j){
 }
 
 bool uncover(int x, int y){
-    if(currentgrid[x][y]==BLANK)revealAdjacent(x,y);
+    currentgrid[x][y]=solugrid[x][y];
+    if(currentgrid[x][y]==BLANK){
+        revealAdjacent(x,y);
+    }
     currentgrid[x][y]=solugrid[x][y];
     return currentgrid[x][y]==MINE;
 }
@@ -114,13 +117,15 @@ int main(void){
     drawGrid(currentgrid, solugrid);
     int x,y;
     while(!solved()){
+        x=-1;y=-1;
         scanf("%i,%i",&x,&y);
         if(x>=0 && x<GRIDSIZE && y>=0 && y<GRIDSIZE){
-        if(uncover(x,y)){
-            drawGrid(currentgrid, solugrid);
-            printf("Hit mine !\r\n");
-            return -1;
-        }
+            printf("Uncovering at %i,%i\r\n",x,y);
+            if(uncover(x,y)){
+                drawGrid(currentgrid, solugrid);
+                printf("Hit mine !\r\n");
+                return -1;
+            }
         }else{
             printf("Invalid input !\tPlease follow this format : X,Y\r\n");
         }
