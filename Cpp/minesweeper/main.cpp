@@ -91,9 +91,11 @@ void revealAdjacent(int i, int j){
     int maxy=(j==(GRIDSIZE-1))?j:j+1;
     for(int x=minx;x<=maxx;x++){
         for(int y=miny;y<=maxy;y++){
-            if(solugrid[x][y]==BLANK && currentgrid[x][y]==UNKNOWN){
-                currentgrid[x][y]=BLANK;
-                revealAdjacent(x,y);
+            if(x!=i && y!=j){
+                if(solugrid[x][y]==BLANK && currentgrid[x][y]==UNKNOWN){
+                    currentgrid[x][y]=BLANK;
+                    revealAdjacent(x,y);
+                }
             }
         }
     }
