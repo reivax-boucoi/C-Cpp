@@ -10,6 +10,7 @@ GLFWwindow* window;
 using namespace glm;
 
 #include <common/shader.hpp>
+#include "mesh.h"
 
 int main( void )
 {
@@ -51,7 +52,7 @@ int main( void )
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
 	// Dark blue background
-	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
 	GLuint VertexArrayID;
 	glGenVertexArrays(1, &VertexArrayID);
@@ -59,9 +60,11 @@ int main( void )
 
 	// Create and compile our GLSL program from the shaders
 	GLuint programID = LoadShaders( "SimpleVertexShader.vertexshader", "SimpleFragmentShader.fragmentshader" );
+    
+    Mesh *m=new Mesh();
+    m->hello();
 
-
-	static GLfloat g_vertex_buffer_data[] = { 
+	GLfloat g_vertex_buffer_data[] = { 
 		-0.8f, -0.8f, 0.0f,
 		 0.8f, -0.8f, 0.0f,
 		 0.8f,  0.8f, 0.0f,
@@ -75,7 +78,7 @@ int main( void )
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
     
-    static GLfloat g_color_buffer_data[] = { 
+    GLfloat g_color_buffer_data[] = { 
             1.0f,  0.0f,  0.0f,
             0.0f,  1.0f,  0.0f,
             0.0f,  0.0f,  1.0f,
