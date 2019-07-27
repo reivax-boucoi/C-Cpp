@@ -65,7 +65,9 @@ int main( void )
 		-0.8f, -0.8f, 0.0f,
 		 0.8f, -0.8f, 0.0f,
 		 0.8f,  0.8f, 0.0f,
+		 0.8f,  0.8f, 0.0f,
         -0.8f,  0.8f, 0.0f,
+		-0.8f, -0.8f, 0.0f,
 	};
 
 	GLuint vertexbuffer;
@@ -86,7 +88,7 @@ int main( void )
 		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 		glVertexAttribPointer(
 			0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
-			4,                  // size
+			3,                  // size
 			GL_FLOAT,           // type
 			GL_FALSE,           // normalized?
 			0,                  // stride
@@ -94,7 +96,7 @@ int main( void )
 		);
 
 		// Draw the triangle !
-		glDrawArrays(GL_TRIANGLES, 0, 3); // 3 indices starting at 0 -> 1 triangle
+		glDrawArrays(GL_TRIANGLES, 0, 6); // 3 indices starting at 0 -> 1 triangle
 
 		glDisableVertexAttribArray(0);
 
