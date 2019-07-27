@@ -74,7 +74,20 @@ int main( void )
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
-
+    
+    static const GLfloat g_color_buffer_data[] = { 
+            1.0f,  0.0f,  0.0f,
+            0.0f,  1.0f,  0.0f,
+            0.0f,  0.0f,  1.0f,
+            0.0f,  0.0f,  0.0f,
+            1.0f,  1.0f,  1.0f,
+            0.5f,  0.5f,  0.5f,
+    };
+	GLuint colorbuffer;
+	glGenBuffers(1, &colorbuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(g_color_buffer_data), g_color_buffer_data, GL_STATIC_DRAW);
+    
 	do{
 
 		// Clear the screen
@@ -94,11 +107,22 @@ int main( void )
 			0,                  // stride
 			(void*)0            // array buffer offset
 		);
-
+        
+        glEnableVertexAttribArray(1);
+		glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
+		glVertexAttribPointer(
+			1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
+			3,                                // size
+			GL_FLOAT,                         // type
+			GL_FALSE,                         // normalized?
+			0,                                // stride
+			(void*)0                          // array buffer offset
+        );
 		// Draw the triangle !
 		glDrawArrays(GL_TRIANGLES, 0, 6); // 3 indices starting at 0 -> 1 triangle
 
 		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
 
 		// Swap buffers
 		glfwSwapBuffers(window);
@@ -110,6 +134,7 @@ int main( void )
 
 	// Cleanup VBO
 	glDeleteBuffers(1, &vertexbuffer);
+	glDeleteBuffers(1, &colorbuffer);
 	glDeleteVertexArrays(1, &VertexArrayID);
 	glDeleteProgram(programID);
 
