@@ -10,7 +10,32 @@ GLFWwindow* window;
 using namespace glm;
 
 #include <common/shader.hpp>
-#include "mesh.h"
+
+class Mesh{
+public:
+    Mesh(int a, int b){
+        w=a;
+        h=b;
+    };
+    void hello(){
+       	fprintf( stdout, "Hello MESH !\n" );
+    };
+    void buildMesh(GLfloat *arr){
+        GLfloat arr1[] = { 
+            -0.8f, -0.8f, 0.0f,
+            0.8f, -0.8f, 0.0f,
+            0.8f,  0.8f, 0.0f,
+            0.8f,  0.8f, 0.0f,
+            -0.8f,  0.8f, 0.0f,
+            -0.8f, -0.8f, 0.0f,
+        };
+        for(int i=0;i<6;i++)arr[i]=arr1[1];
+    };
+    int w,h;
+private:
+    
+    
+};
 
 int main( void )
 {
@@ -61,7 +86,7 @@ int main( void )
 	// Create and compile our GLSL program from the shaders
 	GLuint programID = LoadShaders( "SimpleVertexShader.vertexshader", "SimpleFragmentShader.fragmentshader" );
     
-    Mesh *m=new Mesh();
+    Mesh *m=new Mesh(2,2);
     m->hello();
 
 	GLfloat g_vertex_buffer_data[] = { 
