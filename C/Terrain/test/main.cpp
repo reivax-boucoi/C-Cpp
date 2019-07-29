@@ -36,12 +36,14 @@ int main(int argc, char *argv[]){
     
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);
+	glutInitWindowPosition(100,100);
     glutInitWindowSize(640,480);
     glutCreateWindow("Hello World");
     
     setup();
     glutDisplayFunc(display);
 	//glutReshapeFunc(changeSize);
+    glutIdleFunc(display);
     glutMainLoop();
     
     return 0;
