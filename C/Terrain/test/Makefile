@@ -15,17 +15,7 @@ run: main
 clean :
 	rm -f *.o
 	rm -f $(TARGET)
-	rm -f ./include/*.o
-	
-%.o : %.c
-	gcc -c $< -o $@
 
-main : $(OBJECTS)
-	gcc $(CFLAGS) $(OBJECTS) -o $(TARGET)
-
-test : $(TOBJECTS)
-	gcc $(CFLAGS) $(TOBJECTS) -o $(TARGET)
-	echo "Starting Test Program Execution...\r\n\r\n"
-	./$(TARGET)
-	echo "\r\n\r\nEnd Test Program Execution..."
-	make clean
+main :
+	g++ -Wall -c -fmessage-length=0 -o main.o main.cpp 
+	g++ -o $(TARGET) main.o -lglu32 -lopengl32 -lfreeglut
