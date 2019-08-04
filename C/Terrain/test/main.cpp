@@ -3,48 +3,66 @@
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include <GL/glu.h>
-
-void setup() {
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-    
-}
-
-void display(){
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-    glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
-    glColor3f(1.0f, 0.0f, 0.0f); // Red
-    glVertex2f(-0.5f, -0.5f);    // x, y
-    glVertex2f( 0.5f, -0.5f);
-    glVertex2f( 0.5f,  0.5f);
-    glVertex2f(-0.5f,  0.5f);
-    glEnd();
-    
-    glutSwapBuffers();
-}
 void changeSize(int w, int h) {
-	if(h == 0)h = 1;
-	float ratio = 1.0* w / h;
+
+	// Prevent a divide by zero, when window is too short
+	// (you cant make a window of zero width).
+	if (h == 0)
+		h = 1;
+
+	float ratio =  w * 1.0 / h;
+
+	// Use the Projection Matrix
 	glMatrixMode(GL_PROJECTION);
+
+	// Reset Matrix
 	glLoadIdentity();
+
+	// Set the viewport to be the entire window
 	glViewport(0, 0, w, h);
-	gluPerspective(45,ratio,1,1000);
+
+	// Set the correct perspective.
+	gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+
+	// Get Back to the Modelview
 	glMatrixMode(GL_MODELVIEW);
 }
 
-int main(int argc, char *argv[]){
-    
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);
+float angle = 0.0f;
+
+void renderScene(void) {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+	// Set the camera
+	gluLookAt(	0.0f, 0.0f, 10.0f,
+				0.0f, 0.0f,  0.0f,
+				0.0f, 1.0f,  0.0f);
+
+	glRotatef(angle, 1.0f, 0.0f, 0.0f);
+
+	glBegin(GL_TRIANGLES);
+		glVertex3f(-2.0f,-2.0f, 0.0f);
+		glVertex3f( 2.0f, 0.0f, 0.0);
+		glVertex3f( 0.0f, 2.0f, 0.0);
+	glEnd();
+
+	angle+=0.1f;
+
+	glutSwapBuffers();
+}
+
+int main(int argc, char **argv) {
+
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100,100);
-    glutInitWindowSize(640,480);
-    glutCreateWindow("Hello World");
-    
-    setup();
-    glutDisplayFunc(display);
-	//glutReshapeFunc(changeSize);
-    glutIdleFunc(display);
-    glutMainLoop();
-    
-    return 0;
+	glutInitWindowSize(480,320);
+	glutCreateWindow("Test");
+
+	glutDisplayFunc(renderScene);
+	glutReshapeFunc(changeSize);
+	glutIdleFunc(renderScene);
+	glutMainLoop();
+
+	return 1;
 }
