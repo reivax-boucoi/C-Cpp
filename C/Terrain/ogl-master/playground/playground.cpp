@@ -18,9 +18,12 @@ public:
         h=b;
     };
     void hello(){
-       	fprintf( stdout, "Hello MESH !\n" );
+       	fprintf( stdout, "Hello MESH(%d,%d) !\n",w,h );
     };
-    void buildMesh(GLfloat *arr){
+    void buildMesh(GLfloat arr[]){
+        float xspc=0.9f/w;
+        float yspc=0.9f/h;
+       	fprintf( stdout, "spc(%f,%f)\n",xspc,yspc);
         GLfloat arr1[] = { 
             -0.8f, -0.8f, 0.0f,
             0.8f, -0.8f, 0.0f,
@@ -29,7 +32,35 @@ public:
             -0.8f,  0.8f, 0.0f,
             -0.8f, -0.8f, 0.0f,
         };
-        for(int i=0;i<6;i++)arr[i]=arr1[1];
+        int index=0;
+        for(int i=0;i<w;i++){
+            for(int j=0;j<h;j++){
+                fprintf(stdout,"i=%d,j=%d,index=%d\n",i,j,index);
+                arr[index++]=(float)i*xspc;
+                arr[index++]=(float)j*yspc;
+                arr[index++]=0.0f;
+                
+                arr[index++]=(float)i*xspc;
+                arr[index++]=(float)(j+1)*yspc;
+                arr[index++]=0.0f;
+                
+                arr[index++]=(float)(i+1)*xspc;
+                arr[index++]=(float)j*yspc;
+                arr[index++]=0.0f;
+                
+                arr[index++]=(float)i*xspc;
+                arr[index++]=(float)(j+1)*yspc;
+                arr[index++]=0.0f;
+                
+                arr[index++]=(float)(i+1)*xspc;
+                arr[index++]=(float)(j+1)*yspc;
+                arr[index++]=0.0f;
+                
+                arr[index++]=(float)(i+1)*xspc;
+                arr[index++]=(float)j*yspc;
+                arr[index++]=0.0f;
+            }
+        }
     };
     int w,h;
 private:
@@ -88,16 +119,14 @@ int main( void )
     
     Mesh *m=new Mesh(2,2);
     m->hello();
-
-	GLfloat g_vertex_buffer_data[] = { 
-		-0.8f, -0.8f, 0.0f,
-		 0.8f, -0.8f, 0.0f,
-		 0.8f,  0.8f, 0.0f,
-		 0.8f,  0.8f, 0.0f,
-        -0.8f,  0.8f, 0.0f,
-		-0.8f, -0.8f, 0.0f,
-	};
-
+	GLfloat g_vertex_buffer_data[3*3*2*m->h*m->w];
+    
+    m->buildMesh(g_vertex_buffer_data);
+    
+    for(int i=0;i<3*2*(m->w*m->h);i++){
+        fprintf(stdout,"%d :[%f,%f,%f]\r\n",i,g_vertex_buffer_data[i*3],g_vertex_buffer_data[i*3+1],g_vertex_buffer_data[i*3+2]);
+    }
+    
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
