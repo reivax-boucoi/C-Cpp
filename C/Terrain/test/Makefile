@@ -1,7 +1,7 @@
-IDIR =.include
+IDIR =.
 ODIR=obj
 CC=g++
-CFLAGS=-I -g3 -lglut -lGL -lGLU
+CFLAGS=-I$(IDIR) -g3 -lglut -lGL -lGLU
 TARGET=a.out
 
 _DEPS = NoiseMap.h Mesh.h Terrain.h PerlinNoise.h
