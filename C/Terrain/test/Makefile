@@ -1,21 +1,25 @@
-IDIR =include
+IDIR =.include
 ODIR=obj
 CC=g++
 CFLAGS=-I -g3 -lglut -lGL -lGLU
 TARGET=a.out
 
-DEPS = NoiseMap.h Mesh.h Terrain.h PerlinNoise.h
-#DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+_DEPS = NoiseMap.h Mesh.h Terrain.h PerlinNoise.h
+DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-OBJ = main.o NoiseMap.o Mesh.o Terrain.o PerlinNoise.o
-#OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+_OBJ = main.o NoiseMap.o Mesh.o Terrain.o PerlinNoise.o
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-$(ODIR)/%.o: %.c $(DEPS)
+$(ODIR)/%.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 all: $(OBJ)
 	$(CC) -o $(TARGET) $^ $(CFLAGS)
 	
+run :
+	make all
+	./$(TARGET)
+	make clean
 clean :
-	rm $(ODIR)/*.o
+	rm -f $(ODIR)/*.o
 	rm $(TARGET)
