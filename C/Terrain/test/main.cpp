@@ -5,8 +5,6 @@
 #include "PerlinNoise.h"
 
 #include "Mesh.h"
-#include "NoiseMap.h"
-#include "Terrain.h"
 
 using namespace std;
 
@@ -31,7 +29,7 @@ void renderScene(void) {
     
     glLoadIdentity();
     
-    gluLookAt(	0.0f, 0.0f, 1.5f,
+    gluLookAt(	0.0f, 0.0f, 2.5f,
                 0.0f, 0.0f,  0.0f,
                0.0f, 1.0f,  0.0f);
     
@@ -44,17 +42,60 @@ void mouseMove(int x, int y) {
 }
 
 void mouseButton(int button, int state, int x, int y) {
-    
+    if (button == GLUT_RIGHT_BUTTON) {
+        
+        if (state == GLUT_UP) {
+        }
+        else  {// state = GLUT_DOWN
+        }
+    }else if (button == GLUT_LEFT_BUTTON) {
+        
+        if (state == GLUT_UP) {
+            m->nm->toggleColorMode();
+        }
+        else  {// state = GLUT_DOWN
+        }
+    }else if(button == 3 || button == 4){//mouseScroll
+        if (state == GLUT_UP) return;
+        if(button == 4){
+            m->nm->setScale(m->nm->getScale()/1.5f);
+        }else{
+            m->nm->setScale(m->nm->getScale()*1.5f);
+        }
+        cout<<"Scale="<<m->nm->getScale()<<endl;
+    }
 }
+void processNormalKeys(unsigned char key, int x, int y) {
+}
+void processSpecialKeys(int key, int x, int y) {
+    const int speed=10;
+	switch(key) {
+		case GLUT_KEY_LEFT :
+            m->nm->offsets[0]-=speed;
+            break;
+		case GLUT_KEY_RIGHT :
+            m->nm->offsets[0]+=speed;
+            break;
+		case GLUT_KEY_DOWN :
+            m->nm->offsets[1]-=speed;
+            break;
+		case GLUT_KEY_UP :
+            m->nm->offsets[1]+=speed;
+            break;
+	}
+	m->nm->reComputeArray();
+	
+}
+
 int main(int argc, char **argv) {
     
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-    glutInitWindowPosition(100,100);
-    glutInitWindowSize(480,320);
+    glutInitWindowPosition(10,10);
+    glutInitWindowSize(640,640);
     glutCreateWindow("Test");
     
-    m=new Mesh(5);
+    m=new Mesh(500);
     m->build();
     
     glutDisplayFunc(renderScene);
@@ -62,6 +103,8 @@ int main(int argc, char **argv) {
     glutIdleFunc(renderScene);
     glutMouseFunc(mouseButton);
     glutMotionFunc(mouseMove);
+	glutKeyboardFunc(processNormalKeys);
+	glutSpecialFunc(processSpecialKeys);
     
     glEnable(GL_DEPTH_TEST);
     

@@ -13,14 +13,14 @@ void Mesh::build(void){
 
 void Mesh::draw(){
     
-    float yoff=-0.5f;
-    float spacing=1.0f/size;
+    float xoff=-0.9f;
+    float spacing=1.8f/size;
     glBegin(GL_TRIANGLES);
     for(int i=0;i<size;i++){
         
-        float xoff=-0.5f;
+        float yoff=-0.9f;
         
-        for(int j=0;j<size;j++){    
+        for(int j=0;j<size;j++){
             nm->setColor(i,j);
             glVertex3f(xoff,yoff,nm->getNoise(i,j));
             
@@ -39,9 +39,9 @@ void Mesh::draw(){
             
             nm->setColor(i+1,j);
             glVertex3f(xoff+spacing, yoff, nm->getNoise(i+1,j));
-            xoff+=spacing;
+            yoff+=spacing;
         }
-        yoff+=spacing;
+        xoff+=spacing;
     }
     glEnd();
     

@@ -13,9 +13,9 @@ public:
     ~Mesh();
     void build(void);
     void draw();
+    NoiseMap *nm;
 private :
     int size=0;
-    NoiseMap *nm;
 };
 
 

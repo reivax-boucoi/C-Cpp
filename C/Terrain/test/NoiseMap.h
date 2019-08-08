@@ -4,23 +4,34 @@
 #include <iostream>
 #include <GL/glut.h>
 #include "PerlinNoise.h"
+#include "Terrain.h"
+
 using namespace std;
 
 class NoiseMap{
-    enum ColorMode { Noise, Terrain};
+    enum ColorMode { NoiseMode, TerrainMode};
 public:
     NoiseMap(int s);
     ~NoiseMap();
     float getNoise(int x, int y);
     void setColor(int x, int y);
+    float getScale(void);
+    void setScale(float scale);
+    void toggleColorMode(void);
+    
+    
+    float offsets[3];
+    void reComputeArray(void);
 private:
     int size=0;
-    float scl=10;
-    ColorMode mode=Noise;
+    float scl=0.2;
+    ColorMode colorMode=NoiseMode;
     float persistance=0.5f;
     float lacunarity=2.0f;
     PerlinNoise noise;
     float *values;
+    Terrain terrain;
+    
 };
 
 #endif
