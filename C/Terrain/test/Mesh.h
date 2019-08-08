@@ -12,7 +12,7 @@ public:
     Mesh(int s);
     ~Mesh();
     void build(void);
-    void draw();
+    void draw(int m);
     NoiseMap *nm;
 private :
     int size=0;

@@ -11,10 +11,13 @@ void Mesh::build(void){
     cout << "Mesh init"<<endl;  
 };
 
-void Mesh::draw(){
+void Mesh::draw(int m){
     
     float xoff=-0.9f;
     float spacing=1.8f/size;
+    
+    nm->setDrawMode(m);
+    
     glBegin(GL_TRIANGLES);
     for(int i=0;i<size;i++){
         

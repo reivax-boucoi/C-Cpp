@@ -18,6 +18,7 @@ public:
     float getScale(void);
     void setScale(float scale);
     void toggleColorMode(void);
+    void setDrawMode(int m);
     
     
     float offsets[3];
@@ -26,6 +27,7 @@ private:
     int size=0;
     float scl=0.2;
     ColorMode colorMode=NoiseMode;
+    int drawMode=0;
     float persistance=0.5f;
     float lacunarity=2.0f;
     PerlinNoise noise;

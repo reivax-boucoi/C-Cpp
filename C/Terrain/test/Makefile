@@ -2,7 +2,7 @@ IDIR =.
 ODIR=obj
 CC=g++
 CFLAGS=-I$(IDIR) -g3 -lglut -lGL -lGLU
-TARGET=a.out
+TARGET=NoiseGen.exe
 
 _DEPS = NoiseMap.h Mesh.h Terrain.h PerlinNoise.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))

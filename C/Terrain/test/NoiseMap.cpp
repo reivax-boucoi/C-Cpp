@@ -32,6 +32,9 @@ NoiseMap::~NoiseMap(){
     
 };
 
+void NoiseMap::setDrawMode(int m){
+    drawMode=m;
+}
 
 void NoiseMap::toggleColorMode(void){
     if(colorMode==NoiseMode){
@@ -43,7 +46,7 @@ void NoiseMap::toggleColorMode(void){
 }
 
 float NoiseMap::getNoise(int x, int y){
-    return 0.0f;//values[x*size+y];
+    return drawMode? values[x*size+y] : 0.0f;
 }
 
 void NoiseMap::setColor(int x, int y){

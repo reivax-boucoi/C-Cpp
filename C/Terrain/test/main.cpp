@@ -24,7 +24,7 @@ void changeSize(int w, int h) {
 
 float angle = 0.0f;
 
-void renderScene(void) {
+void renderScene1(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glLoadIdentity();
@@ -35,9 +35,23 @@ void renderScene(void) {
     
     //glRotatef(angle, 1.0f, 0.0f, 0.0f);
     
-    m->draw();
+    m->draw(0);
     glutSwapBuffers();
 }
+void renderScene2(void) {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    glLoadIdentity();
+    
+    gluLookAt(	0.0f, 0.0f, 2.5f,
+                0.0f, 0.0f,  0.0f,
+               0.0f, 1.0f,  0.0f);
+    
+    glRotatef(angle, 1.0f, 0.0f, 0.0f);
+    m->draw(1);
+    glutSwapBuffers();
+}
+
 void mouseMove(int x, int y) { 	
 }
 
@@ -66,6 +80,15 @@ void mouseButton(int button, int state, int x, int y) {
     }
 }
 void processNormalKeys(unsigned char key, int x, int y) {
+    switch(key){
+        case 'a':
+            angle+=10;
+            break;
+        case 'e':
+            angle-=10;
+            break;
+    }
+    cout << "angle:"<<angle<<endl;
 }
 void processSpecialKeys(int key, int x, int y) {
     const int speed=10;
@@ -90,23 +113,32 @@ void processSpecialKeys(int key, int x, int y) {
 int main(int argc, char **argv) {
     
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-    glutInitWindowPosition(10,10);
-    glutInitWindowSize(640,640);
-    glutCreateWindow("Test");
+    glEnable(GL_DEPTH_TEST);
     
     m=new Mesh(500);
     m->build();
     
-    glutDisplayFunc(renderScene);
+    glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
+    glutInitWindowPosition(10,10);
+    glutInitWindowSize(640,640);
+    glutCreateWindow("Flat Map");
+    
+    
+    glutDisplayFunc(renderScene1);
     glutReshapeFunc(changeSize);
-    glutIdleFunc(renderScene);
+    glutIdleFunc(renderScene1);
     glutMouseFunc(mouseButton);
     glutMotionFunc(mouseMove);
 	glutKeyboardFunc(processNormalKeys);
 	glutSpecialFunc(processSpecialKeys);
     
-    glEnable(GL_DEPTH_TEST);
+    
+    glutInitWindowPosition(660,10);
+    glutCreateWindow("3D render");
+    
+    glutDisplayFunc(renderScene2);
+    glutReshapeFunc(changeSize);
+    glutIdleFunc(renderScene2);
     
     glutMainLoop();
     
