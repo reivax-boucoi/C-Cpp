@@ -10,16 +10,18 @@ DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 _OBJ = main.o NoiseMap.o Mesh.o Terrain.o PerlinNoise.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
+default : all
+
 $(ODIR)/%.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
-
+	
+run : all
+	./$(TARGET)
+	
 all: $(OBJ)
 	$(CC) -o $(TARGET) $^ $(CFLAGS)
 	
-run :
-	make all
-	./$(TARGET)
-	make clean
+
 clean :
 	rm -f $(ODIR)/*.o
 	rm $(TARGET)
