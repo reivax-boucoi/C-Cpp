@@ -1,21 +1,17 @@
-TARGET= a.out
-OBJECTS=main.o include/coureur.o include/liste.o
-TOBJECTS=test.o include/coureur.o include/liste.o
-CFLAGS= -Wall
+IDIR =include
+CC=g++
+CFLAGS=-I -g3 -lglut -lGL -lGLU
+TARGET=a.out
 
-default : main
+DEPS = NoiseMap.h Mesh.h Terrain.h PerlinNoise.h
+OBJ = main.o NoiseMap.o Mesh.o Terrain.o PerlinNoise.o
 
-all : main
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-run: main
-	echo "Starting Program Execution..."
-	./$(TARGET)
-	make clean
+all: $(OBJ)
+	$(CC) -o $(TARGET) $^ $(CFLAGS)
 	
 clean :
-	rm -f *.o
-	rm -f $(TARGET)
-
-main :
-	g++ -Wall -c -fmessage-length=0 -o main.o main.cpp 
-	g++ -o $(TARGET) main.o -lglu32 -lopengl32 -lfreeglut
+	rm *.o
+	rm $(TARGET)
