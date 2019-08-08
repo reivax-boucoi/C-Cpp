@@ -33,21 +33,8 @@ void renderScene1(void) {
                 0.0f, 0.0f,  0.0f,
                0.0f, 1.0f,  0.0f);
     
-    //glRotatef(angle, 1.0f, 0.0f, 0.0f);
-    
-    m->draw(0);
-    glutSwapBuffers();
-}
-void renderScene2(void) {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-    glLoadIdentity();
-    
-    gluLookAt(	0.0f, 0.0f, 2.5f,
-                0.0f, 0.0f,  0.0f,
-               0.0f, 1.0f,  0.0f);
-    
     glRotatef(angle, 1.0f, 0.0f, 0.0f);
+    
     m->draw(1);
     glutSwapBuffers();
 }
@@ -132,13 +119,6 @@ int main(int argc, char **argv) {
 	glutKeyboardFunc(processNormalKeys);
 	glutSpecialFunc(processSpecialKeys);
     
-    
-    glutInitWindowPosition(660,10);
-    glutCreateWindow("3D render");
-    
-    glutDisplayFunc(renderScene2);
-    glutReshapeFunc(changeSize);
-    glutIdleFunc(renderScene2);
     
     glutMainLoop();
     
