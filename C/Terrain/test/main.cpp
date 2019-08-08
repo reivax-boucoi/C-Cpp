@@ -24,7 +24,7 @@ void changeSize(int w, int h) {
 
 float angle = 0.0f;
 
-void renderScene1(void) {
+void renderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glLoadIdentity();
@@ -33,13 +33,23 @@ void renderScene1(void) {
                 0.0f, 0.0f,  0.0f,
                0.0f, 1.0f,  0.0f);
     
-    glRotatef(angle, 1.0f, 0.0f, 0.0f);
+    if(glutGetWindow()==2){
+        glRotatef(angle, 1.0f, 0.0f, 0.0f);
+        m->draw(1);
+    }else{
+        m->draw(0);
+    }
     
-    m->draw(1);
     glutSwapBuffers();
 }
-
-void mouseMove(int x, int y) { 	
+void renderAll(){
+    glutSetWindow(2);
+    renderScene();
+    glutSetWindow(1);
+    renderScene();
+}
+void mouseMove(int x, int y) {
+    glutPostRedisplay();
 }
 
 void mouseButton(int button, int state, int x, int y) {
@@ -65,6 +75,7 @@ void mouseButton(int button, int state, int x, int y) {
         }
         cout<<"Scale="<<m->nm->getScale()<<endl;
     }
+    glutPostRedisplay();
 }
 void processNormalKeys(unsigned char key, int x, int y) {
     switch(key){
@@ -76,25 +87,28 @@ void processNormalKeys(unsigned char key, int x, int y) {
             break;
     }
     cout << "angle:"<<angle<<endl;
+    glutPostRedisplay();
 }
+
 void processSpecialKeys(int key, int x, int y) {
     const int speed=10;
-	switch(key) {
-		case GLUT_KEY_LEFT :
+    switch(key) {
+        case GLUT_KEY_LEFT :
             m->nm->offsets[0]-=speed;
             break;
-		case GLUT_KEY_RIGHT :
+        case GLUT_KEY_RIGHT :
             m->nm->offsets[0]+=speed;
             break;
-		case GLUT_KEY_DOWN :
+        case GLUT_KEY_DOWN :
             m->nm->offsets[1]-=speed;
             break;
-		case GLUT_KEY_UP :
+        case GLUT_KEY_UP :
             m->nm->offsets[1]+=speed;
             break;
-	}
-	m->nm->reComputeArray();
-	
+    }
+    m->nm->reComputeArray();
+    glutPostRedisplay();
+    
 }
 
 int main(int argc, char **argv) {
@@ -108,17 +122,26 @@ int main(int argc, char **argv) {
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
     glutInitWindowPosition(10,10);
     glutInitWindowSize(640,640);
-    glutCreateWindow("Flat Map");
+    glutCreateWindow("FlatMap");
     
     
-    glutDisplayFunc(renderScene1);
+    glutDisplayFunc(renderAll);
     glutReshapeFunc(changeSize);
-    glutIdleFunc(renderScene1);
     glutMouseFunc(mouseButton);
     glutMotionFunc(mouseMove);
-	glutKeyboardFunc(processNormalKeys);
-	glutSpecialFunc(processSpecialKeys);
+    glutKeyboardFunc(processNormalKeys);
+    glutSpecialFunc(processSpecialKeys);
     
+    
+    glutInitWindowPosition(660,10);
+    glutCreateWindow("3D View");
+    
+    glutDisplayFunc(renderAll);
+    glutReshapeFunc(changeSize);
+    glutMouseFunc(mouseButton);
+    glutMotionFunc(mouseMove);
+    glutKeyboardFunc(processNormalKeys);
+    glutSpecialFunc(processSpecialKeys);
     
     glutMainLoop();
     

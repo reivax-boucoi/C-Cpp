@@ -3,8 +3,8 @@
 NoiseMap::NoiseMap(int s){
     size=s+1;
     cout << "NoiseMap init"<<endl;
-    offsets[0]=0.0f;
-    offsets[1]=0.0f;
+    offsets[0]=100.0f;
+    offsets[1]=500.0f;
     offsets[2]=0.0f;
     values=new float[size*size];
     reComputeArray();
