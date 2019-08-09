@@ -84,6 +84,7 @@ void mouseButton(int button, int state, int x, int y) {
     glutPostRedisplay();
 }
 void processNormalKeys(unsigned char key, int x, int y) {
+    const int speed=10;
     switch(key){
         case 's':
             angles[0]+=5;
@@ -107,6 +108,10 @@ void processNormalKeys(unsigned char key, int x, int y) {
         case 'r':
             angles[0]=0;
             angles[1]=0;
+            pos[0]=0;
+            pos[1]=0;
+            pos[2]=0;
+            d=2.5f;
             m->nm->resetOffsets();
             break;
         case '4':
@@ -121,8 +126,14 @@ void processNormalKeys(unsigned char key, int x, int y) {
         case '8':
             m->nm->moveOffset(1,speed);
             break;
+        case '+' :
+            pos[2]+=0.1f;
+            break;
+        case '-' :
+            pos[2]-=0.1f;
+            break;
         default:
-            cout << "key:"<<key<<endl;
+            cout << "Normalkey:"<<key<<endl;
             break;
             
     }
@@ -130,22 +141,21 @@ void processNormalKeys(unsigned char key, int x, int y) {
 }
 
 void processSpecialKeys(int key, int x, int y) {
-    const int speed=10;
     switch(key) {
         case GLUT_KEY_LEFT :
-            pos[0]+=0.1f;
-            break;
-        case GLUT_KEY_RIGHT :
             pos[0]-=0.1f;
             break;
-        case GLUT_KEY_DOWN :
-            pos[1]+=0.1f;
+        case GLUT_KEY_RIGHT :
+            pos[0]+=0.1f;
             break;
-        case GLUT_KEY_UP :
+        case GLUT_KEY_DOWN :
             pos[1]-=0.1f;
             break;
+        case GLUT_KEY_UP :
+            pos[1]+=0.1f;
+            break;
         default:
-            cout << "key:"<<key<<endl;
+            cout << "Specialkey:"<<key<<endl;
             break;
     }
     glutPostRedisplay();

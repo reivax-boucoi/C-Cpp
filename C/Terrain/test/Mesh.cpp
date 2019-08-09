@@ -13,15 +13,15 @@ void Mesh::build(void){
 
 void Mesh::draw(int m){
     
-    float xoff=-0.9f;
-    float spacing=1.8f/size;
+    float xoff=-0.95f;
+    float spacing=1.9f/size;
     
     nm->setDrawMode(m);
     
     glBegin(GL_TRIANGLES);
     for(int i=0;i<size;i++){//draw every vertex centered on (0,0) with appropriate color and heigth (if m==1)
         
-        float yoff=-0.9f;
+        float yoff=-0.95f;
         
         for(int j=0;j<size;j++){
             nm->setColor(i,j);
