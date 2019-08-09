@@ -1,13 +1,13 @@
 IDIR =.
 ODIR=obj
 CC=g++
-CFLAGS=-I$(IDIR) -g3 -lglut -lGL -lGLU -Wall -std=c++17
+CFLAGS=-I$(IDIR) -Wall -g3 -lglut -lGL -lGLU  -std=c++17
 TARGET=NoiseGen.exe
 
-_DEPS = NoiseMap.h Mesh.h Terrain.h PerlinNoise.h
+_DEPS = CurveEditor.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o NoiseMap.o Mesh.o Terrain.o PerlinNoise.o
+_OBJ = main.o CurveEditor.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 default : all
