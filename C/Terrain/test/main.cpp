@@ -33,6 +33,9 @@ void renderScene(void) {
                 0.0f, 0.0f,  0.0f,
                0.0f, 1.0f,  0.0f);
     
+    GLfloat specular[] = {1.0, 1.0, 1.0, 1.0};
+    glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+    
     if(glutGetWindow()==2){
         glRotatef(angle, 1.0f, 0.0f, 0.0f);
         m->draw(1);
