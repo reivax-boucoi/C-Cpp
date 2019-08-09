@@ -11,7 +11,7 @@ using namespace std;
 class NoiseMap{
     enum ColorMode { NoiseMode, TerrainMode};
 public:
-    NoiseMap(int s);
+    NoiseMap(int s, float per, float lac, int nbOct);
     ~NoiseMap();
     float getNoise(int x, int y);
     void setColor(int x, int y);

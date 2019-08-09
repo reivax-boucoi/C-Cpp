@@ -1,11 +1,21 @@
 #include "NoiseMap.h"
 
-NoiseMap::NoiseMap(int s){
+NoiseMap::NoiseMap(int s, float per, float lac, int nbOct){
     size=s+1;
+    persistance=per;
+    lacunarity=lac;
+    octaves=nbOct;
     
     origin=new float[octaves*2];
     offsets=new float[octaves*2];
+    
     values=new float[size*size];
+    
+    for(int i=0;i<size;i++){        
+        for(int j=0;j<size;j++){  
+            values[j+i*size]=0.0f;
+        }
+    }
     
     for(int i=0;i<2*octaves;i++){
         origin[i]=0.0f;
@@ -17,11 +27,17 @@ NoiseMap::NoiseMap(int s){
 };
 
 void NoiseMap::reComputeArray(void){
-    for(int i=0;i<size;i++){        
-        for(int j=0;j<size;j++){  
-            values[j+i*size]=noise.noise((i+offsets[0])/(scl*size),(j+offsets[1])/(scl*size),0.0f);
-            //cout<<values[j+i*size]<<endl;
+    float amplitude=1.0f;
+    float frequency=1.0f;
+    for(int oct=0;oct<octaves;oct++){
+        for(int i=0;i<size;i++){        
+            for(int j=0;j<size;j++){  
+                values[j+i*size]+=amplitude*noise.noise(frequency*(i+offsets[0])/(scl*size),frequency*(j+offsets[1])/(scl*size),0.0f);
+                //cout<<values[j+i*size]<<endl;
+            }
         }
+        amplitude*=persistance;
+        frequency*=lacunarity;
     }
 }
 

@@ -7,7 +7,7 @@ Mesh::Mesh(int s){
 Mesh::~Mesh(){};
 
 void Mesh::build(void){
-    nm=new NoiseMap(size);
+    nm=new NoiseMap(size,0.5f,2.0f,5);
     cout << "Mesh init"<<endl;  
 };
 
