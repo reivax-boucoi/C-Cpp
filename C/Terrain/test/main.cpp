@@ -10,6 +10,7 @@ using namespace std;
 
 
 Mesh *m;
+float angles[3] = {0.0f,0.0f,0.0f};
 
 void changeSize(int w, int h) {
     
@@ -22,7 +23,6 @@ void changeSize(int w, int h) {
     glMatrixMode(GL_MODELVIEW);
 }
 
-float angle = 0.0f;
 
 void renderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -37,7 +37,9 @@ void renderScene(void) {
     glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
     
     if(glutGetWindow()==2){
-        glRotatef(angle, 1.0f, 0.0f, 0.0f);
+        glRotatef(angles[0], 1.0f, 0.0f, 0.0f);
+        glRotatef(angles[1], 0.0f, 1.0f, 0.0f);
+        glRotatef(angles[2], 0.0f, 0.0f, 1.0f);
         m->draw(1);
     }else{
         m->draw(0);
@@ -82,14 +84,31 @@ void mouseButton(int button, int state, int x, int y) {
 }
 void processNormalKeys(unsigned char key, int x, int y) {
     switch(key){
+        case 's':
+            angles[0]+=10;
+            break;
+        case 'z':
+            angles[0]-=10;
+            break;
+        case 'q':
+            angles[1]+=10;
+            break;
+        case 'd':
+            angles[1]-=10;
+            break;
         case 'a':
-            angle+=10;
+            angles[2]+=10;
             break;
         case 'e':
-            angle-=10;
+            angles[2]-=10;
+            break;
+        case 'r':
+            angles[0]=0;
+            angles[1]=0;
+            angles[2]=0;
+            m->nm->resetOffsets();
             break;
     }
-    cout << "angle:"<<angle<<endl;
     glutPostRedisplay();
 }
 
@@ -97,19 +116,18 @@ void processSpecialKeys(int key, int x, int y) {
     const int speed=10;
     switch(key) {
         case GLUT_KEY_LEFT :
-            m->nm->offsets[0]-=speed;
+            m->nm->moveOffset(0,-speed);
             break;
         case GLUT_KEY_RIGHT :
-            m->nm->offsets[0]+=speed;
+            m->nm->moveOffset(0,speed);
             break;
         case GLUT_KEY_DOWN :
-            m->nm->offsets[1]-=speed;
+            m->nm->moveOffset(1,-speed);
             break;
         case GLUT_KEY_UP :
-            m->nm->offsets[1]+=speed;
+            m->nm->moveOffset(1,speed);
             break;
     }
-    m->nm->reComputeArray();
     glutPostRedisplay();
     
 }

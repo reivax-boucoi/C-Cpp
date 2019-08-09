@@ -20,8 +20,10 @@ public:
     void toggleColorMode(void);
     void setDrawMode(int m);
     
+    void resetOffsets(void);
+    void moveOffset(int axis, float speed);
     
-    float offsets[3];
+    
     void reComputeArray(void);
 private:
     int size=0;
@@ -30,8 +32,11 @@ private:
     int drawMode=0;
     float persistance=0.5f;
     float lacunarity=2.0f;
+    int octaves=1;
     PerlinNoise noise;
     float *values;
+    float *offsets;
+    float *origin;
     Terrain terrain;
     
 };

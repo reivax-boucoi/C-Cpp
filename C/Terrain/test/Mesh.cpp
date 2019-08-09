@@ -27,20 +27,20 @@ void Mesh::draw(int m){
             nm->setColor(i,j);
             glVertex3f(xoff,yoff,nm->getNoise(i,j));
             
-            nm->setColor(i+1,j+1);
+            nm->setColor(i,j);
             glVertex3f(xoff+spacing,yoff+spacing,nm->getNoise(i+1,j+1));
             
-            nm->setColor(i,j+1);
+            nm->setColor(i,j);
             glVertex3f( xoff, yoff+spacing, nm->getNoise(i,j+1));
             
             
             nm->setColor(i,j);
             glVertex3f(xoff,yoff, nm->getNoise(i,j));
             
-            nm->setColor(i+1,j+1);
+            nm->setColor(i,j);
             glVertex3f( xoff+spacing,yoff+spacing, nm->getNoise(i+1,j+1));
             
-            nm->setColor(i+1,j);
+            nm->setColor(i,j);
             glVertex3f(xoff+spacing, yoff, nm->getNoise(i+1,j));
             yoff+=spacing;
         }
