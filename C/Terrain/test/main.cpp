@@ -10,8 +10,8 @@ using namespace std;
 
 
 Mesh *m;
-float angles[3] = {0.0f,0.0f,0.0f};
-
+float angles[2] = {0.0f,0.0f};
+float d=2.5f;
 void changeSize(int w, int h) {
     
     if (h == 0)h = 1;
@@ -29,19 +29,18 @@ void renderScene(void) {
     
     glLoadIdentity();
     
-    gluLookAt(	0.0f, 0.0f, 2.5f,
-                0.0f, 0.0f,  0.0f,
-               0.0f, 1.0f,  0.0f);
-    
-    GLfloat specular[] = {1.0, 1.0, 1.0, 1.0};
-    glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
-    
     if(glutGetWindow()==2){
+        gluLookAt(	0.0f, 0.0f, d,
+                    0.0f, 0.0f,  0.0f,
+                0.0f, 1.0f,  0.0f);
+    
         glRotatef(angles[0], 1.0f, 0.0f, 0.0f);
-        glRotatef(angles[1], 0.0f, 1.0f, 0.0f);
-        glRotatef(angles[2], 0.0f, 0.0f, 1.0f);
+        glRotatef(angles[1], 0.0f, 0.0f, 1.0f);
         m->draw(1);
     }else{
+        gluLookAt(	0.0f, 0.0f, 2.5f,
+                    0.0f, 0.0f,  0.0f,
+                0.0f, 1.0f,  0.0f);
         m->draw(0);
     }
     
@@ -85,27 +84,27 @@ void mouseButton(int button, int state, int x, int y) {
 void processNormalKeys(unsigned char key, int x, int y) {
     switch(key){
         case 's':
-            angles[0]+=10;
+            angles[0]+=5;
             break;
         case 'z':
-            angles[0]-=10;
-            break;
-        case 'q':
-            angles[1]+=10;
-            break;
-        case 'd':
-            angles[1]-=10;
+            angles[0]-=5;
             break;
         case 'a':
-            angles[2]+=10;
+            d+=0.1f;
             break;
         case 'e':
-            angles[2]-=10;
+            d-=0.1f;
+            
+            break;
+        case 'q':
+            angles[1]+=5;
+            break;
+        case 'd':
+            angles[1]-=5;
             break;
         case 'r':
             angles[0]=0;
             angles[1]=0;
-            angles[2]=0;
             m->nm->resetOffsets();
             break;
     }
@@ -137,7 +136,7 @@ int main(int argc, char **argv) {
     glutInit(&argc, argv);
     glEnable(GL_DEPTH_TEST);
     
-    m=new Mesh(400);
+    m=new Mesh(200);
     m->build();
     
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);

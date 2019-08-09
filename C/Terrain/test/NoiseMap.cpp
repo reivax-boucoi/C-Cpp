@@ -9,21 +9,31 @@ NoiseMap::NoiseMap(int s, float per, float lac, int nbOct){
     origin=new float[octaves*2];
     offsets=new float[octaves*2];
     
-    values=new float[size*size];
+    noiseValues=new float[size*size];
+    colorValues=new Color[size*size];
     
-    for(int i=0;i<size;i++){        
-        for(int j=0;j<size;j++){  
-            values[j+i*size]=0.0f;
-        }
-    }
     
-    for(int i=0;i<2*octaves;i++){
+    globalminMax[0]=0.0f;
+    
+    float amplitude=1.0f;
+    for(int i=0;i<octaves;i++){
+        globalminMax[0]+=amplitude;
+        globalminMax[1]-=amplitude;
+        amplitude*=persistance;
         origin[i]=0.0f;
+        origin[i+octaves]=0.0f;
         offsets[i]=origin[i];
+        offsets[i+octaves]=origin[i+octaves];
     }
+    globalminMax[0]*=0.8f;
+    globalminMax[1]=-globalminMax[0];
     
     reComputeArray();
     cout << "NoiseMap init"<<endl;
+};
+
+NoiseMap::~NoiseMap(){
+    
 };
 
 float inverseLerp(float min, float max, float value){
@@ -35,17 +45,24 @@ float lerp(float min, float max, float time){
 }
 
 void NoiseMap::reComputeArray(void){
-    minMax[0]=numeric_limits<float>::max();
-    minMax[1]=-numeric_limits<float>::max();
+    
+    for(int i=0;i<size;i++){        
+        for(int j=0;j<size;j++){  
+            noiseValues[j+i*size]=0.0f;
+        }
+    }
+    
+    localminMax[0]=numeric_limits<float>::max();
+    localminMax[1]=-numeric_limits<float>::max();
     float amplitude=1.0f;
     float frequency=1.0f;
     for(int oct=0;oct<octaves;oct++){
         for(int i=0;i<size;i++){        
             for(int j=0;j<size;j++){  
-                values[j+i*size]+=amplitude*noise.noise(frequency*(i+offsets[0])/(scl*size),frequency*(j+offsets[1])/(scl*size),0.0f);
-                if(values[j+i*size]>=minMax[1])minMax[1]=values[j+i*size];
-                if(values[j+i*size]<=minMax[0])minMax[0]=values[j+i*size];
-                //cout<<values[j+i*size]<<endl;
+                noiseValues[j+i*size]+=amplitude*noise.noise(frequency*(i+offsets[0])/(scl*size),frequency*(j+offsets[1])/(scl*size),0.0f);
+                if(noiseValues[j+i*size]>=localminMax[1])localminMax[1]=noiseValues[j+i*size];
+                if(noiseValues[j+i*size]<=localminMax[0])localminMax[0]=noiseValues[j+i*size];
+                //cout<<noiseValues[j+i*size]<<endl;
             }
         }
         amplitude*=persistance;
@@ -53,11 +70,18 @@ void NoiseMap::reComputeArray(void){
     }
         for(int i=0;i<size;i++){        
             for(int j=0;j<size;j++){  
-                values[j+i*size]=inverseLerp(minMax[0],minMax[1],values[j+i*size]);
+                noiseValues[j+i*size]=inverseLerp(localminMax[0],localminMax[1],noiseValues[j+i*size]);
+                noiseValues[j+i*size]=heightCurve(noiseValues[j+i*size]);
+                colorValues[j+i*size]=terrain.getColor(noiseValues[j+i*size]);
             }
         }
+       // cout << "Global minMax ["<< globalminMax[0]<<','<<globalminMax[1] <<"],\t local minMax ["<<localminMax[0]<<','<<localminMax[1]<<']'<<endl;
 }
 
+
+float NoiseMap::heightCurve(float x){
+        return (heightCurveModifier +1.0f)*pow(x,heightCurveModifier) - heightCurveModifier*pow(x,heightCurveModifier+1.0f);
+}
 
 void NoiseMap::resetOffsets(void){
     for(int i=0;i<2*octaves;i++){
@@ -68,9 +92,7 @@ void NoiseMap::resetOffsets(void){
 
 void NoiseMap::moveOffset(int axis, float speed){
     for(int i=0;i<octaves;i++){
-        cout <<offsets[(i*2)+axis]<<"   "<<(i*2)+axis<<endl;
         offsets[(i*2)+axis]+=speed;
-        cout <<offsets[(i*2)+axis]<<endl;
     }
     reComputeArray();
 }
@@ -83,9 +105,6 @@ void NoiseMap::setScale(float scale){
     reComputeArray();
 }
 
-NoiseMap::~NoiseMap(){
-    
-};
 
 void NoiseMap::setDrawMode(int m){
     drawMode=m;
@@ -101,15 +120,20 @@ void NoiseMap::toggleColorMode(void){
 }
 
 float NoiseMap::getNoise(int x, int y){
-    return drawMode? 0.5f*values[x*size+y] : 0.0f;
+    if(drawMode){
+        if(noiseValues[x*size+y]<0.4)return 0.0f;
+        return scl*(noiseValues[x*size+y]-0.4f);
+    }else{
+        return 0.0f;
+    }
 }
 
 void NoiseMap::setColor(int x, int y){
     if(colorMode==NoiseMode){
-        // cout << "c["<<x<<','<<y<<"]="<<values[x*size+y]<<endl;
-        glColor3f(values[x*size+y],values[x*size+y],values[x*size+y]);
+        // cout << "c["<<x<<','<<y<<"]="<<noiseValues[x*size+y]<<endl;
+        glColor3f(noiseValues[x*size+y],noiseValues[x*size+y],noiseValues[x*size+y]);
     }else if(colorMode==TerrainMode){
-        terrain.setColor(values[x*size+y]);
+        terrain.setColor(colorValues[x*size+y]);
         
     }else{
         cout << "Panic"<<endl;

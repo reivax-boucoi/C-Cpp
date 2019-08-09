@@ -7,7 +7,7 @@ Mesh::Mesh(int s){
 Mesh::~Mesh(){};
 
 void Mesh::build(void){
-    nm=new NoiseMap(size,0.5f,2.0f,5);
+    nm=new NoiseMap(size,0.5f,2.0f,8);
     cout << "Mesh init"<<endl;  
 };
 
@@ -19,7 +19,7 @@ void Mesh::draw(int m){
     nm->setDrawMode(m);
     
     glBegin(GL_TRIANGLES);
-    for(int i=0;i<size;i++){
+    for(int i=0;i<size;i++){//draw every vertex centered on (0,0) with appropriate color and heigth (if m==1)
         
         float yoff=-0.9f;
         

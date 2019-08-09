@@ -4,6 +4,7 @@
 #include <iostream>
 #include <GL/glut.h>
 #include <limits>
+#include <cmath>
 #include "PerlinNoise.h"
 #include "Terrain.h"
 
@@ -23,9 +24,10 @@ public:
     
     void resetOffsets(void);
     void moveOffset(int axis, float speed);
-    
-    
+    float heightCurve(float x);
     void reComputeArray(void);
+    
+    float heightCurveModifier=3.6f;
 private:
     int size=0;
     float scl=0.2;
@@ -35,10 +37,13 @@ private:
     float lacunarity=2.0f;
     int octaves=1;
     PerlinNoise noise;
-    float *values;
-    float minMax[2];
+    float *noiseValues;
+    Color *colorValues;
+    float localminMax[2];
+    float globalminMax[2];
     float *offsets;
     float *origin;
+    
     Terrain terrain;
     
 };
