@@ -137,7 +137,7 @@ int main(int argc, char **argv) {
     glutInit(&argc, argv);
     glEnable(GL_DEPTH_TEST);
     
-    m=new Mesh(500);
+    m=new Mesh(400);
     m->build();
     
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);

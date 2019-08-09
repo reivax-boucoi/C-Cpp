@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <GL/glut.h>
+#include <limits>
 #include "PerlinNoise.h"
 #include "Terrain.h"
 
@@ -35,6 +36,7 @@ private:
     int octaves=1;
     PerlinNoise noise;
     float *values;
+    float minMax[2];
     float *offsets;
     float *origin;
     Terrain terrain;

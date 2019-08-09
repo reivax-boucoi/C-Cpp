@@ -26,19 +26,36 @@ NoiseMap::NoiseMap(int s, float per, float lac, int nbOct){
     cout << "NoiseMap init"<<endl;
 };
 
+float inverseLerp(float min, float max, float value){
+    return (value-min)/(max-min);
+}
+
+float lerp(float min, float max, float time){
+    return min+time*(max-min);
+}
+
 void NoiseMap::reComputeArray(void){
+    minMax[0]=numeric_limits<float>::max();
+    minMax[1]=-numeric_limits<float>::max();
     float amplitude=1.0f;
     float frequency=1.0f;
     for(int oct=0;oct<octaves;oct++){
         for(int i=0;i<size;i++){        
             for(int j=0;j<size;j++){  
                 values[j+i*size]+=amplitude*noise.noise(frequency*(i+offsets[0])/(scl*size),frequency*(j+offsets[1])/(scl*size),0.0f);
+                if(values[j+i*size]>=minMax[1])minMax[1]=values[j+i*size];
+                if(values[j+i*size]<=minMax[0])minMax[0]=values[j+i*size];
                 //cout<<values[j+i*size]<<endl;
             }
         }
         amplitude*=persistance;
         frequency*=lacunarity;
     }
+        for(int i=0;i<size;i++){        
+            for(int j=0;j<size;j++){  
+                values[j+i*size]=inverseLerp(minMax[0],minMax[1],values[j+i*size]);
+            }
+        }
 }
 
 
@@ -84,7 +101,7 @@ void NoiseMap::toggleColorMode(void){
 }
 
 float NoiseMap::getNoise(int x, int y){
-    return drawMode? values[x*size+y] : 0.0f;
+    return drawMode? 0.5f*values[x*size+y] : 0.0f;
 }
 
 void NoiseMap::setColor(int x, int y){
