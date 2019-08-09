@@ -11,6 +11,7 @@ using namespace std;
 
 Mesh *m;
 float angles[2] = {0.0f,0.0f};
+float pos[3] = {0.0f,0.0f,0.0f};
 float d=2.5f;
 void changeSize(int w, int h) {
     
@@ -29,18 +30,19 @@ void renderScene(void) {
     
     glLoadIdentity();
     
-    if(glutGetWindow()==2){
+    if(glutGetWindow()==2){//3D view
         gluLookAt(	0.0f, 0.0f, d,
-                    0.0f, 0.0f,  0.0f,
-                0.0f, 1.0f,  0.0f);
-    
+                    pos[0],pos[1],pos[2],
+                   0.0f, 1.0f,  0.0f);
+        
         glRotatef(angles[0], 1.0f, 0.0f, 0.0f);
         glRotatef(angles[1], 0.0f, 0.0f, 1.0f);
         m->draw(1);
-    }else{
+        
+    }else{//Flatland
         gluLookAt(	0.0f, 0.0f, 2.5f,
                     0.0f, 0.0f,  0.0f,
-                0.0f, 1.0f,  0.0f);
+                   0.0f, 1.0f,  0.0f);
         m->draw(0);
     }
     
@@ -107,6 +109,22 @@ void processNormalKeys(unsigned char key, int x, int y) {
             angles[1]=0;
             m->nm->resetOffsets();
             break;
+        case '4':
+            m->nm->moveOffset(0,-speed);
+            break;
+        case '6':
+            m->nm->moveOffset(0,speed);
+            break;
+        case '2':
+            m->nm->moveOffset(1,-speed);
+            break;
+        case '8':
+            m->nm->moveOffset(1,speed);
+            break;
+        default:
+            cout << "key:"<<key<<endl;
+            break;
+            
     }
     glutPostRedisplay();
 }
@@ -115,16 +133,19 @@ void processSpecialKeys(int key, int x, int y) {
     const int speed=10;
     switch(key) {
         case GLUT_KEY_LEFT :
-            m->nm->moveOffset(0,-speed);
+            pos[0]+=0.1f;
             break;
         case GLUT_KEY_RIGHT :
-            m->nm->moveOffset(0,speed);
+            pos[0]-=0.1f;
             break;
         case GLUT_KEY_DOWN :
-            m->nm->moveOffset(1,-speed);
+            pos[1]+=0.1f;
             break;
         case GLUT_KEY_UP :
-            m->nm->moveOffset(1,speed);
+            pos[1]-=0.1f;
+            break;
+        default:
+            cout << "key:"<<key<<endl;
             break;
     }
     glutPostRedisplay();
