@@ -1518,59 +1518,113 @@ misc05_picking/misc05_picking_slow_easy.cpp.s:
 	$(MAKE) -f CMakeFiles/misc05_picking_slow_easy.dir/build.make CMakeFiles/misc05_picking_slow_easy.dir/misc05_picking/misc05_picking_slow_easy.cpp.s
 .PHONY : misc05_picking/misc05_picking_slow_easy.cpp.s
 
-playground/Mesh.o: playground/Mesh.cpp.o
+playground/include/Mesh.o: playground/include/Mesh.cpp.o
 
-.PHONY : playground/Mesh.o
-
-# target to build an object file
-playground/Mesh.cpp.o:
-	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Mesh.cpp.o
-.PHONY : playground/Mesh.cpp.o
-
-playground/Mesh.i: playground/Mesh.cpp.i
-
-.PHONY : playground/Mesh.i
-
-# target to preprocess a source file
-playground/Mesh.cpp.i:
-	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Mesh.cpp.i
-.PHONY : playground/Mesh.cpp.i
-
-playground/Mesh.s: playground/Mesh.cpp.s
-
-.PHONY : playground/Mesh.s
-
-# target to generate assembly for a file
-playground/Mesh.cpp.s:
-	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Mesh.cpp.s
-.PHONY : playground/Mesh.cpp.s
-
-playground/Noisemap.o: playground/Noisemap.cpp.o
-
-.PHONY : playground/Noisemap.o
+.PHONY : playground/include/Mesh.o
 
 # target to build an object file
-playground/Noisemap.cpp.o:
-	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Noisemap.cpp.o
-.PHONY : playground/Noisemap.cpp.o
+playground/include/Mesh.cpp.o:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/Mesh.cpp.o
+.PHONY : playground/include/Mesh.cpp.o
 
-playground/Noisemap.i: playground/Noisemap.cpp.i
+playground/include/Mesh.i: playground/include/Mesh.cpp.i
 
-.PHONY : playground/Noisemap.i
+.PHONY : playground/include/Mesh.i
 
 # target to preprocess a source file
-playground/Noisemap.cpp.i:
-	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Noisemap.cpp.i
-.PHONY : playground/Noisemap.cpp.i
+playground/include/Mesh.cpp.i:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/Mesh.cpp.i
+.PHONY : playground/include/Mesh.cpp.i
 
-playground/Noisemap.s: playground/Noisemap.cpp.s
+playground/include/Mesh.s: playground/include/Mesh.cpp.s
 
-.PHONY : playground/Noisemap.s
+.PHONY : playground/include/Mesh.s
 
 # target to generate assembly for a file
-playground/Noisemap.cpp.s:
-	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Noisemap.cpp.s
-.PHONY : playground/Noisemap.cpp.s
+playground/include/Mesh.cpp.s:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/Mesh.cpp.s
+.PHONY : playground/include/Mesh.cpp.s
+
+playground/include/Noisemap.o: playground/include/Noisemap.cpp.o
+
+.PHONY : playground/include/Noisemap.o
+
+# target to build an object file
+playground/include/Noisemap.cpp.o:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o
+.PHONY : playground/include/Noisemap.cpp.o
+
+playground/include/Noisemap.i: playground/include/Noisemap.cpp.i
+
+.PHONY : playground/include/Noisemap.i
+
+# target to preprocess a source file
+playground/include/Noisemap.cpp.i:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/Noisemap.cpp.i
+.PHONY : playground/include/Noisemap.cpp.i
+
+playground/include/Noisemap.s: playground/include/Noisemap.cpp.s
+
+.PHONY : playground/include/Noisemap.s
+
+# target to generate assembly for a file
+playground/include/Noisemap.cpp.s:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/Noisemap.cpp.s
+.PHONY : playground/include/Noisemap.cpp.s
+
+playground/include/PerlinNoise.o: playground/include/PerlinNoise.cpp.o
+
+.PHONY : playground/include/PerlinNoise.o
+
+# target to build an object file
+playground/include/PerlinNoise.cpp.o:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o
+.PHONY : playground/include/PerlinNoise.cpp.o
+
+playground/include/PerlinNoise.i: playground/include/PerlinNoise.cpp.i
+
+.PHONY : playground/include/PerlinNoise.i
+
+# target to preprocess a source file
+playground/include/PerlinNoise.cpp.i:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.i
+.PHONY : playground/include/PerlinNoise.cpp.i
+
+playground/include/PerlinNoise.s: playground/include/PerlinNoise.cpp.s
+
+.PHONY : playground/include/PerlinNoise.s
+
+# target to generate assembly for a file
+playground/include/PerlinNoise.cpp.s:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.s
+.PHONY : playground/include/PerlinNoise.cpp.s
+
+playground/include/noisegenerator.o: playground/include/noisegenerator.cpp.o
+
+.PHONY : playground/include/noisegenerator.o
+
+# target to build an object file
+playground/include/noisegenerator.cpp.o:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.o
+.PHONY : playground/include/noisegenerator.cpp.o
+
+playground/include/noisegenerator.i: playground/include/noisegenerator.cpp.i
+
+.PHONY : playground/include/noisegenerator.i
+
+# target to preprocess a source file
+playground/include/noisegenerator.cpp.i:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.i
+.PHONY : playground/include/noisegenerator.cpp.i
+
+playground/include/noisegenerator.s: playground/include/noisegenerator.cpp.s
+
+.PHONY : playground/include/noisegenerator.s
+
+# target to generate assembly for a file
+playground/include/noisegenerator.cpp.s:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.s
+.PHONY : playground/include/noisegenerator.cpp.s
 
 playground/playground.o: playground/playground.cpp.o
 
@@ -2298,12 +2352,18 @@ help:
 	@echo "... misc05_picking/misc05_picking_slow_easy.o"
 	@echo "... misc05_picking/misc05_picking_slow_easy.i"
 	@echo "... misc05_picking/misc05_picking_slow_easy.s"
-	@echo "... playground/Mesh.o"
-	@echo "... playground/Mesh.i"
-	@echo "... playground/Mesh.s"
-	@echo "... playground/Noisemap.o"
-	@echo "... playground/Noisemap.i"
-	@echo "... playground/Noisemap.s"
+	@echo "... playground/include/Mesh.o"
+	@echo "... playground/include/Mesh.i"
+	@echo "... playground/include/Mesh.s"
+	@echo "... playground/include/Noisemap.o"
+	@echo "... playground/include/Noisemap.i"
+	@echo "... playground/include/Noisemap.s"
+	@echo "... playground/include/PerlinNoise.o"
+	@echo "... playground/include/PerlinNoise.i"
+	@echo "... playground/include/PerlinNoise.s"
+	@echo "... playground/include/noisegenerator.o"
+	@echo "... playground/include/noisegenerator.i"
+	@echo "... playground/include/noisegenerator.s"
 	@echo "... playground/playground.o"
 	@echo "... playground/playground.i"
 	@echo "... playground/playground.s"

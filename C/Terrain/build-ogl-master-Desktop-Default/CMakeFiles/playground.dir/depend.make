@@ -92,12 +92,17 @@ CMakeFiles/playground.dir/common/shader.cpp.o: /media/user/Data/Documents/C-Cpp/
 CMakeFiles/playground.dir/common/shader.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/common/shader.hpp
 CMakeFiles/playground.dir/common/shader.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/external/glew-1.13.0/include/GL/glew.h
 
-CMakeFiles/playground.dir/playground/Mesh.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Mesh.cpp
-CMakeFiles/playground.dir/playground/Mesh.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Mesh.h
-CMakeFiles/playground.dir/playground/Mesh.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Noisemap.h
+CMakeFiles/playground.dir/playground/include/Mesh.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Mesh.cpp
+CMakeFiles/playground.dir/playground/include/Mesh.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Mesh.h
+CMakeFiles/playground.dir/playground/include/Mesh.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Noisemap.h
+CMakeFiles/playground.dir/playground/include/Mesh.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/PerlinNoise.h
 
-CMakeFiles/playground.dir/playground/Noisemap.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Noisemap.cpp
-CMakeFiles/playground.dir/playground/Noisemap.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Noisemap.h
+CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Noisemap.cpp
+CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Noisemap.h
+CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/PerlinNoise.h
+
+CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/PerlinNoise.cpp
+CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/PerlinNoise.h
 
 CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/./common/controls.hpp
 CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/./common/shader.hpp
@@ -186,7 +191,8 @@ CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Document
 CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/external/glm-0.9.7.1/glm/vec3.hpp
 CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/external/glm-0.9.7.1/glm/vec4.hpp
 CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/external/glm-0.9.7.1/glm/vector_relational.hpp
-CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Mesh.h
-CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Noisemap.h
+CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/./include/Mesh.h
+CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/./include/Noisemap.h
+CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/./include/PerlinNoise.h
 CMakeFiles/playground.dir/playground/playground.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/playground.cpp
 

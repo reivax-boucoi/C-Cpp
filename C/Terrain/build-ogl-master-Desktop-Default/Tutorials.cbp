@@ -6494,22 +6494,34 @@
 		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/misc05_picking/misc05_picking_slow_easy.cpp">
 			<Option target="misc05_picking_slow_easy"/>
 		</Unit>
-		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Mesh.cpp">
-			<Option target="playground"/>
-		</Unit>
-		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Mesh.h">
-			<Option target="playground"/>
-		</Unit>
-		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Noisemap.cpp">
-			<Option target="playground"/>
-		</Unit>
-		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Noisemap.h">
-			<Option target="playground"/>
-		</Unit>
 		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/SimpleTransform.vertexshader">
 			<Option target="playground"/>
 		</Unit>
 		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/SingleColor.fragmentshader">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Mesh.cpp">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Mesh.h">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Noisemap.cpp">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Noisemap.h">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/PerlinNoise.cpp">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/PerlinNoise.h">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/noisegenerator.cpp">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/noisegenerator.h">
 			<Option target="playground"/>
 		</Unit>
 		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/playground.cpp">

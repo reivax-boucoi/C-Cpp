@@ -519,10 +519,14 @@ add_executable(playground
 	common/shader.hpp
         common/controls.cpp
         common/controls.hpp
-        playground/Mesh.cpp
-        playground/Noisemap.cpp
-        playground/Noisemap.h
-        playground/Mesh.h
+        playground/include/Mesh.cpp
+        playground/include/Mesh.h
+        playground/include/noisegenerator.cpp
+        playground/include/noisegenerator.h
+        playground/include/Noisemap.cpp
+        playground/include/Noisemap.h
+        playground/include/PerlinNoise.cpp
+        playground/include/PerlinNoise.h
 	playground/SimpleTransform.vertexshader
 	playground/SingleColor.fragmentshader
 )

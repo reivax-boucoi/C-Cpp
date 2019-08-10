@@ -16,7 +16,7 @@ using namespace glm;
 
 #include <common/shader.hpp>
 #include <common/controls.hpp>
-#include "Mesh.h"
+#include "./include/Mesh.h"
 
 int main( void )
 {
