@@ -3937,6 +3937,7 @@
 			<Option target="tutorial18_particles"/>
 			<Option target="misc05_picking_custom"/>
 			<Option target="misc05_picking_slow_easy"/>
+			<Option target="playground"/>
 			<Option target="tutorial16_shadowmaps"/>
 			<Option target="tutorial16_shadowmaps_simple"/>
 			<Option target="tutorial06_keyboard_and_mouse"/>
@@ -3959,6 +3960,7 @@
 			<Option target="tutorial18_particles"/>
 			<Option target="misc05_picking_custom"/>
 			<Option target="misc05_picking_slow_easy"/>
+			<Option target="playground"/>
 			<Option target="tutorial16_shadowmaps"/>
 			<Option target="tutorial16_shadowmaps_simple"/>
 			<Option target="tutorial06_keyboard_and_mouse"/>
@@ -6491,6 +6493,24 @@
 		</Unit>
 		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/misc05_picking/misc05_picking_slow_easy.cpp">
 			<Option target="misc05_picking_slow_easy"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Mesh.cpp">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Mesh.h">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Noisemap.cpp">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/Noisemap.h">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/SimpleTransform.vertexshader">
+			<Option target="playground"/>
+		</Unit>
+		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/SingleColor.fragmentshader">
+			<Option target="playground"/>
 		</Unit>
 		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/playground.cpp">
 			<Option target="playground"/>

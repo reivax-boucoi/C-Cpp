@@ -945,6 +945,7 @@ common/controls.cpp.o:
 	$(MAKE) -f CMakeFiles/tutorial18_particles.dir/build.make CMakeFiles/tutorial18_particles.dir/common/controls.cpp.o
 	$(MAKE) -f CMakeFiles/misc05_picking_custom.dir/build.make CMakeFiles/misc05_picking_custom.dir/common/controls.cpp.o
 	$(MAKE) -f CMakeFiles/misc05_picking_slow_easy.dir/build.make CMakeFiles/misc05_picking_slow_easy.dir/common/controls.cpp.o
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/common/controls.cpp.o
 	$(MAKE) -f CMakeFiles/tutorial16_shadowmaps.dir/build.make CMakeFiles/tutorial16_shadowmaps.dir/common/controls.cpp.o
 	$(MAKE) -f CMakeFiles/tutorial16_shadowmaps_simple.dir/build.make CMakeFiles/tutorial16_shadowmaps_simple.dir/common/controls.cpp.o
 	$(MAKE) -f CMakeFiles/tutorial06_keyboard_and_mouse.dir/build.make CMakeFiles/tutorial06_keyboard_and_mouse.dir/common/controls.cpp.o
@@ -973,6 +974,7 @@ common/controls.cpp.i:
 	$(MAKE) -f CMakeFiles/tutorial18_particles.dir/build.make CMakeFiles/tutorial18_particles.dir/common/controls.cpp.i
 	$(MAKE) -f CMakeFiles/misc05_picking_custom.dir/build.make CMakeFiles/misc05_picking_custom.dir/common/controls.cpp.i
 	$(MAKE) -f CMakeFiles/misc05_picking_slow_easy.dir/build.make CMakeFiles/misc05_picking_slow_easy.dir/common/controls.cpp.i
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/common/controls.cpp.i
 	$(MAKE) -f CMakeFiles/tutorial16_shadowmaps.dir/build.make CMakeFiles/tutorial16_shadowmaps.dir/common/controls.cpp.i
 	$(MAKE) -f CMakeFiles/tutorial16_shadowmaps_simple.dir/build.make CMakeFiles/tutorial16_shadowmaps_simple.dir/common/controls.cpp.i
 	$(MAKE) -f CMakeFiles/tutorial06_keyboard_and_mouse.dir/build.make CMakeFiles/tutorial06_keyboard_and_mouse.dir/common/controls.cpp.i
@@ -1001,6 +1003,7 @@ common/controls.cpp.s:
 	$(MAKE) -f CMakeFiles/tutorial18_particles.dir/build.make CMakeFiles/tutorial18_particles.dir/common/controls.cpp.s
 	$(MAKE) -f CMakeFiles/misc05_picking_custom.dir/build.make CMakeFiles/misc05_picking_custom.dir/common/controls.cpp.s
 	$(MAKE) -f CMakeFiles/misc05_picking_slow_easy.dir/build.make CMakeFiles/misc05_picking_slow_easy.dir/common/controls.cpp.s
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/common/controls.cpp.s
 	$(MAKE) -f CMakeFiles/tutorial16_shadowmaps.dir/build.make CMakeFiles/tutorial16_shadowmaps.dir/common/controls.cpp.s
 	$(MAKE) -f CMakeFiles/tutorial16_shadowmaps_simple.dir/build.make CMakeFiles/tutorial16_shadowmaps_simple.dir/common/controls.cpp.s
 	$(MAKE) -f CMakeFiles/tutorial06_keyboard_and_mouse.dir/build.make CMakeFiles/tutorial06_keyboard_and_mouse.dir/common/controls.cpp.s
@@ -1514,6 +1517,60 @@ misc05_picking/misc05_picking_slow_easy.s: misc05_picking/misc05_picking_slow_ea
 misc05_picking/misc05_picking_slow_easy.cpp.s:
 	$(MAKE) -f CMakeFiles/misc05_picking_slow_easy.dir/build.make CMakeFiles/misc05_picking_slow_easy.dir/misc05_picking/misc05_picking_slow_easy.cpp.s
 .PHONY : misc05_picking/misc05_picking_slow_easy.cpp.s
+
+playground/Mesh.o: playground/Mesh.cpp.o
+
+.PHONY : playground/Mesh.o
+
+# target to build an object file
+playground/Mesh.cpp.o:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Mesh.cpp.o
+.PHONY : playground/Mesh.cpp.o
+
+playground/Mesh.i: playground/Mesh.cpp.i
+
+.PHONY : playground/Mesh.i
+
+# target to preprocess a source file
+playground/Mesh.cpp.i:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Mesh.cpp.i
+.PHONY : playground/Mesh.cpp.i
+
+playground/Mesh.s: playground/Mesh.cpp.s
+
+.PHONY : playground/Mesh.s
+
+# target to generate assembly for a file
+playground/Mesh.cpp.s:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Mesh.cpp.s
+.PHONY : playground/Mesh.cpp.s
+
+playground/Noisemap.o: playground/Noisemap.cpp.o
+
+.PHONY : playground/Noisemap.o
+
+# target to build an object file
+playground/Noisemap.cpp.o:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Noisemap.cpp.o
+.PHONY : playground/Noisemap.cpp.o
+
+playground/Noisemap.i: playground/Noisemap.cpp.i
+
+.PHONY : playground/Noisemap.i
+
+# target to preprocess a source file
+playground/Noisemap.cpp.i:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Noisemap.cpp.i
+.PHONY : playground/Noisemap.cpp.i
+
+playground/Noisemap.s: playground/Noisemap.cpp.s
+
+.PHONY : playground/Noisemap.s
+
+# target to generate assembly for a file
+playground/Noisemap.cpp.s:
+	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/Noisemap.cpp.s
+.PHONY : playground/Noisemap.cpp.s
 
 playground/playground.o: playground/playground.cpp.o
 
@@ -2241,6 +2298,12 @@ help:
 	@echo "... misc05_picking/misc05_picking_slow_easy.o"
 	@echo "... misc05_picking/misc05_picking_slow_easy.i"
 	@echo "... misc05_picking/misc05_picking_slow_easy.s"
+	@echo "... playground/Mesh.o"
+	@echo "... playground/Mesh.i"
+	@echo "... playground/Mesh.s"
+	@echo "... playground/Noisemap.o"
+	@echo "... playground/Noisemap.i"
+	@echo "... playground/Noisemap.s"
 	@echo "... playground/playground.o"
 	@echo "... playground/playground.i"
 	@echo "... playground/playground.s"
