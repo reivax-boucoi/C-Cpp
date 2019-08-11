@@ -6518,12 +6518,6 @@
 		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/PerlinNoise.h">
 			<Option target="playground"/>
 		</Unit>
-		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/noisegenerator.cpp">
-			<Option target="playground"/>
-		</Unit>
-		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/noisegenerator.h">
-			<Option target="playground"/>
-		</Unit>
 		<Unit filename="/media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/playground.cpp">
 			<Option target="playground"/>
 		</Unit>

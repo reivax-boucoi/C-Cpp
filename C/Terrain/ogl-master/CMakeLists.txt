@@ -521,8 +521,6 @@ add_executable(playground
         common/controls.hpp
         playground/include/Mesh.cpp
         playground/include/Mesh.h
-        playground/include/noisegenerator.cpp
-        playground/include/noisegenerator.h
         playground/include/Noisemap.cpp
         playground/include/Noisemap.h
         playground/include/PerlinNoise.cpp

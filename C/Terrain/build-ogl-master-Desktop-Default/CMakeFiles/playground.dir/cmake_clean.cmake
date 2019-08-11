@@ -3,7 +3,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/playground.dir/common/shader.cpp.o"
   "CMakeFiles/playground.dir/common/controls.cpp.o"
   "CMakeFiles/playground.dir/playground/include/Mesh.cpp.o"
-  "CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.o"
   "CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o"
   "CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o"
   "playground.pdb"

@@ -1599,33 +1599,6 @@ playground/include/PerlinNoise.cpp.s:
 	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.s
 .PHONY : playground/include/PerlinNoise.cpp.s
 
-playground/include/noisegenerator.o: playground/include/noisegenerator.cpp.o
-
-.PHONY : playground/include/noisegenerator.o
-
-# target to build an object file
-playground/include/noisegenerator.cpp.o:
-	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.o
-.PHONY : playground/include/noisegenerator.cpp.o
-
-playground/include/noisegenerator.i: playground/include/noisegenerator.cpp.i
-
-.PHONY : playground/include/noisegenerator.i
-
-# target to preprocess a source file
-playground/include/noisegenerator.cpp.i:
-	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.i
-.PHONY : playground/include/noisegenerator.cpp.i
-
-playground/include/noisegenerator.s: playground/include/noisegenerator.cpp.s
-
-.PHONY : playground/include/noisegenerator.s
-
-# target to generate assembly for a file
-playground/include/noisegenerator.cpp.s:
-	$(MAKE) -f CMakeFiles/playground.dir/build.make CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.s
-.PHONY : playground/include/noisegenerator.cpp.s
-
 playground/playground.o: playground/playground.cpp.o
 
 .PHONY : playground/playground.o
@@ -2361,9 +2334,6 @@ help:
 	@echo "... playground/include/PerlinNoise.o"
 	@echo "... playground/include/PerlinNoise.i"
 	@echo "... playground/include/PerlinNoise.s"
-	@echo "... playground/include/noisegenerator.o"
-	@echo "... playground/include/noisegenerator.i"
-	@echo "... playground/include/noisegenerator.s"
 	@echo "... playground/playground.o"
 	@echo "... playground/playground.i"
 	@echo "... playground/playground.s"

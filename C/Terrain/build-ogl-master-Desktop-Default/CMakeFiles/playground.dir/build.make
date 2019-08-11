@@ -109,22 +109,9 @@ CMakeFiles/playground.dir/playground/include/Mesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/playground.dir/playground/include/Mesh.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Mesh.cpp -o CMakeFiles/playground.dir/playground/include/Mesh.cpp.s
 
-CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.o: CMakeFiles/playground.dir/flags.make
-CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/noisegenerator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/user/Data/Documents/C-Cpp/C/Terrain/build-ogl-master-Desktop-Default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.o -c /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/noisegenerator.cpp
-
-CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/noisegenerator.cpp > CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.i
-
-CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/noisegenerator.cpp -o CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.s
-
 CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o: CMakeFiles/playground.dir/flags.make
 CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Noisemap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/user/Data/Documents/C-Cpp/C/Terrain/build-ogl-master-Desktop-Default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/user/Data/Documents/C-Cpp/C/Terrain/build-ogl-master-Desktop-Default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o -c /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/Noisemap.cpp
 
 CMakeFiles/playground.dir/playground/include/Noisemap.cpp.i: cmake_force
@@ -137,7 +124,7 @@ CMakeFiles/playground.dir/playground/include/Noisemap.cpp.s: cmake_force
 
 CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o: CMakeFiles/playground.dir/flags.make
 CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o: /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/PerlinNoise.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/user/Data/Documents/C-Cpp/C/Terrain/build-ogl-master-Desktop-Default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/user/Data/Documents/C-Cpp/C/Terrain/build-ogl-master-Desktop-Default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o -c /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/include/PerlinNoise.cpp
 
 CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.i: cmake_force
@@ -154,7 +141,6 @@ playground_OBJECTS = \
 "CMakeFiles/playground.dir/common/shader.cpp.o" \
 "CMakeFiles/playground.dir/common/controls.cpp.o" \
 "CMakeFiles/playground.dir/playground/include/Mesh.cpp.o" \
-"CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.o" \
 "CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o" \
 "CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o"
 
@@ -165,7 +151,6 @@ playground: CMakeFiles/playground.dir/playground/playground.cpp.o
 playground: CMakeFiles/playground.dir/common/shader.cpp.o
 playground: CMakeFiles/playground.dir/common/controls.cpp.o
 playground: CMakeFiles/playground.dir/playground/include/Mesh.cpp.o
-playground: CMakeFiles/playground.dir/playground/include/noisegenerator.cpp.o
 playground: CMakeFiles/playground.dir/playground/include/Noisemap.cpp.o
 playground: CMakeFiles/playground.dir/playground/include/PerlinNoise.cpp.o
 playground: CMakeFiles/playground.dir/build.make
@@ -192,7 +177,7 @@ playground: /usr/lib/x86_64-linux-gnu/libXcursor.so
 playground: /usr/lib/x86_64-linux-gnu/libGL.so
 playground: /usr/lib/x86_64-linux-gnu/libGLU.so
 playground: CMakeFiles/playground.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/user/Data/Documents/C-Cpp/C/Terrain/build-ogl-master-Desktop-Default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable playground"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/user/Data/Documents/C-Cpp/C/Terrain/build-ogl-master-Desktop-Default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable playground"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/playground.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/cmake -E copy /media/user/Data/Documents/C-Cpp/C/Terrain/build-ogl-master-Desktop-Default/./playground /media/user/Data/Documents/C-Cpp/C/Terrain/ogl-master/playground/
 
