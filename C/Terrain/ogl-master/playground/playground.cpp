@@ -82,7 +82,11 @@ int main( void )
     // Get a handle for our "MVP" uniform
     GLuint MatrixID = glGetUniformLocation(programID, "MVP");
 
-    static const GLfloat g_vertex_buffer_data[] = {
+    Mesh *m=new Mesh(3,1,0.5f,2.0f,100);
+
+    GLfloat *g_vertex_buffer_data=new GLfloat [m->getVertexCount()];
+    g_vertex_buffer_data=m->generateVertexData();
+    /*static const GLfloat g_vertex_buffer_data[] = {
         -1.0f,-1.0f,-1.0f, // triangle 1 : begin
         -1.0f,-1.0f, 1.0f,
         -1.0f, 1.0f, 1.0f, // triangle 1 : end
@@ -120,14 +124,13 @@ int main( void )
         -1.0f, 1.0f, 1.0f,
         1.0f,-1.0f, 1.0f
     };
-
+*/
     GLuint vertexbuffer;
     glGenBuffers(1, &vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
 
-    static GLfloat g_color_buffer_data[12*3*3];
-    int i=0;
+    GLfloat *g_color_buffer_data=new GLfloat [m->getVertexCount()];
     for (int v = 0; v < 12*3 ; v++){
         g_color_buffer_data[3*v+0] =(v<6)?0.0f:1.0f;
         g_color_buffer_data[3*v+1] = (v>12)?0.0f:1.0f;
